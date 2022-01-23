@@ -2,6 +2,9 @@
   "name": "sap-graph-client",
   "version": "0.0.1",
   "private": false,
+  "scripts": {
+    "start": "node src/helloSalesOrders"
+  },
   "dependencies": {
     "express": "4.17.2",
     "node-fetch": "2.6.7",
