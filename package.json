@@ -1,0 +1,10 @@
+{
+  "name": "sap-graph-client",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "express": "4.17.2",
+    "node-fetch": "2.6.7",
+    "universal-cookie": "4.0.4"
+  }
+}
