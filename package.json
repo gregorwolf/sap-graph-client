@@ -6,7 +6,7 @@
     "start": "node src/helloSalesOrders"
   },
   "dependencies": {
-    "express": "4.17.3",
+    "express": "4.18.2",
     "node-fetch": "2.6.7",
     "universal-cookie": "4.0.4"
   }
