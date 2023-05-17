@@ -1,0 +1,38 @@
+### Get Access Token (Cloud Foundry using Client Credentials)
+# @name requestAccessToken
+POST {{$dotenv tokenendpoint}}/oauth/token
+Authorization: Basic {{$dotenv clientid}}:{{$dotenv clientsecret}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&response_type=token
+
+### Fill Variables from Response
+@access_token = {{requestAccessToken.response.body.$.access_token}}
+
+
+###
+GET {{$dotenv graph}}
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/catalog
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/config
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/A_BusinessPartner
+  ?$top=10
+Authorization: Bearer {{access_token}}
