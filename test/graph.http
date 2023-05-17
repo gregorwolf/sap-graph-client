@@ -33,6 +33,29 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4
 Authorization: Bearer {{access_token}}
 ###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/$metadata
+Authorization: Bearer {{access_token}}
+###
 GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/A_BusinessPartner
   ?$top=10
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/A_BusinessPartnerAddress
+  ?$top=10
+  &$count=true
+  &$filter=Country eq 'DE'
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/A_BuPaAddressUsage
+  ?$top=10
+  &$filter=AddressUsage ne 'XXDEFAULT'
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/A_Product
+  ?$top=10
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/A_SalesOrder
+  ?$top=10
+  &$expand=to_Item,to_Partner($expand=to_Address)
 Authorization: Bearer {{access_token}}
