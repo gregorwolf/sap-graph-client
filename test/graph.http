@@ -59,3 +59,17 @@ GET {{$dotenv graph}}/api/{{$dotenv name}}/sap.s4/A_SalesOrder
   ?$top=10
   &$expand=to_Item,to_Partner($expand=to_Address)
 Authorization: Bearer {{access_token}}
+
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/my.erp.so
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/my.erp.so/$metadata
+Authorization: Bearer {{access_token}}
+
+###
+GET {{$dotenv graph}}/api/{{$dotenv name}}/my.erp.so/ZA_SalesOrder
+  ?$top=10
+  &$filter=SalesOrder eq '{{$dotenv SalesOrder}}'
+  &$expand=to_Item,to_Partner($expand=to_Address)
+Authorization: Bearer {{access_token}}
