@@ -81,5 +81,9 @@ GET {{$dotenv graph}}/api/{{$dotenv name}}/my.erp.so/ZA_SalesOrder
   ?$top=10
   &$filter=SalesOrder eq '{{$dotenv SalesOrder}}'
   &$expand=to_Item($select=FunctionalLocation),to_Partner($expand=to_Address($select=Country,FullName))
+  // This query:
+  // to_Partner($filter=PartnerFunction eq 'ZZ')
+  // returns:
+  // The OData V2 API for entity 'ZA_SalesOrder' does not support $filter or $orderby on expanded properties.
   &$select=SalesOrder
 Authorization: Bearer {{access_token}}
