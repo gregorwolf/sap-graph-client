@@ -30,6 +30,12 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph}}/catalog/{{$dotenv name}}
 Authorization: Bearer {{access_token}}
 ###
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}/sap.s4
+Authorization: Bearer {{access_token}}
+### Request OpenAPI specification
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}/sap.s4/A_SalesOrder
+Authorization: Bearer {{access_token}}
+###
 GET {{$dotenv graph}}/api/{{$dotenv name}}
 Authorization: Bearer {{access_token}}
 ###
