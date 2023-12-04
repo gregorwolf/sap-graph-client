@@ -2,3 +2,4 @@ node_modules/
 credentials.json
 binding-*.json
 .env
+gen/
