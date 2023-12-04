@@ -18,6 +18,12 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph}}/catalog
 Authorization: Bearer {{access_token}}
 ###
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}/my.erp.bp/
+Authorization: Bearer {{access_token}}
+###
 GET {{$dotenv graph}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_BusinessPartner
 Authorization: Bearer {{access_token}}
 ### URL from the OpenAPI specification
