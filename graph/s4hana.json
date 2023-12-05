@@ -1,0 +1,45 @@
+{
+  "businessDataGraphIdentifier": "s4hc",
+  "description": "S/4HANA Cloud Sandbox",
+  "graphModelVersion": "^v3",
+  "schemaVersion": "1.2.0",
+  "dataSources": [
+    {
+      "name": "s4",
+      "services": [
+        {
+          "destinationName": "API-Sandbox-S4HANACloud",
+          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+        },
+        {
+          "destinationName": "API-Sandbox-S4HANACloud",
+          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV"
+        },
+        {
+          "destinationName": "API-Sandbox-S4HANACloud",
+          "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+        },
+        {
+          "destinationName": "API-Sandbox-S4HANACloud",
+          "path": "/sap/opu/odata/sap/API_JOURNALENTRYITEMBASIC_SRV"
+        }
+      ]
+    }
+  ],
+  "locatingPolicy": {
+    "cues": [],
+    "rules": [
+      {
+        "name": "sap.s4.*",
+        "leading": "s4",
+        "local": []
+      },
+      {
+        "name": "sap.graph.*",
+        "leading": "s4",
+        "local": []
+      }
+    ]
+  },
+  "effectiveGraphModelVersion": "3.1.0"
+}
