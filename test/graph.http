@@ -26,6 +26,15 @@ Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_BusinessPartner
 Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_Customer
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_Supplier
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_BusinessPartnerAddress
+Authorization: Bearer {{access_token}}
 ### URL from the OpenAPI specification
 ### returns:
 ### cannot route request, no match found for path /catalog/my.erp.bp
