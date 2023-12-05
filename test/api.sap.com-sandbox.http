@@ -1,0 +1,15 @@
+###
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_JOURNALENTRYITEMBASIC_SRV/$metadata
+APIKey: {{$dotenv APIKey}}
+###
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_JOURNALENTRYITEMBASIC_SRV/
+APIKey: {{$dotenv APIKey}}
+Accept: application/json
+###
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_JOURNALENTRYITEMBASIC_SRV/A_CompanyCode
+  ?$top=10
+APIKey: {{$dotenv APIKey}}
+Accept: application/json
+###
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_cnsldtngrpjrnlentr/srvd_a2x/sap/cnsldtngroupjournalentry/0001/$metadata
+APIKey: {{$dotenv APIKey}}
