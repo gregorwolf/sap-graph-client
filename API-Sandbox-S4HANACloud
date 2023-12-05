@@ -1,0 +1,12 @@
+#URL.headers.apikey=<< Existing password/certificate removed on export >>
+#
+#Tue Dec 05 13:45:59 UTC 2023
+Description=api.sap.com S/4HANA Sandbox
+Type=HTTP
+HTML5.Timeout=30000
+HTML5.DynamicDestination=true
+Authentication=NoAuthentication
+Name=API-Sandbox-S4HANACloud
+WebIDEEnabled=true
+ProxyType=Internet
+URL=https\://sandbox.api.sap.com/s4hanacloud
