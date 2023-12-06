@@ -1,0 +1,4 @@
+### Works as linked service in Azure Data Factory 
+GET https://services.odata.org/V4/OData/OData.svc/
+###
+GET https://services.odata.org/V4/OData/OData.svc/$metadata

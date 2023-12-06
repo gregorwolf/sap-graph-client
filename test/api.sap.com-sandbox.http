@@ -13,3 +13,16 @@ Accept: application/json
 ###
 GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_cnsldtngrpjrnlentr/srvd_a2x/sap/cnsldtngroupjournalentry/0001/$metadata
 APIKey: {{$dotenv APIKey}}
+### OData V4 Service
+# When used as linked service in Azure Data Factory the test returns this error:
+#
+# Failed to create odata connection to RequestUrl.
+# The metadata document could not be read from the message content.
+# XmlError : '', hexadecimal value 0x1F, is an invalid character. Line 1, position 1. : (1, 1)
+#
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_cnsldtngrpjrnlentr/srvd_a2x/sap/cnsldtngroupjournalentry/0001/
+APIKey: {{$dotenv APIKey}}
+
+### OData V4 Service
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_cnsldtngrpjrnlentr/srvd_a2x/sap/cnsldtngroupjournalentry/0001/$metadata
+APIKey: {{$dotenv APIKey}}
