@@ -17,11 +17,11 @@
 - Maintain the credentials in `test/.env` here is the template:
 
 ```
-clientid=
-clientsecret=""
-tokenendpoint=
-graph=
-name=s4hc
+graph_clientid=
+graph_clientsecret=""
+graph_tokenendpoint=
+graph_uri=
+graph_name=s4hc
 ```
 
 Test the Graph with the REST Client Script in `test/graph.http`
