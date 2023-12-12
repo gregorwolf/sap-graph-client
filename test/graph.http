@@ -18,22 +18,22 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph_uri}}/catalog
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}/my.erp.bp/
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_BusinessPartner
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_BusinessPartner
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_Customer
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_Customer
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_Supplier
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_Supplier
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}/my.erp.bp/ZA_BusinessPartnerAddress
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_BusinessPartnerAddress
 Authorization: Bearer {{access_token}}
 ### URL from the OpenAPI specification
 ### returns:
@@ -47,66 +47,66 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph_uri}}/config
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}
 Authorization: Bearer {{access_token}}
 ### For S/4HANA start here
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}/sap.s4
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/sap.s4
 Authorization: Bearer {{access_token}}
 ### Request OpenAPI specification
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv name}}/sap.s4/A_SalesOrder
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/sap.s4/A_SalesOrder
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4/$metadata
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/$metadata
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4/A_BusinessPartner
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_BusinessPartner
   ?$top=10
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4/A_BusinessPartnerAddress
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_BusinessPartnerAddress
   ?$top=10
   &$count=true
   &$filter=Country eq 'DE'
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4/A_BuPaAddressUsage
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_BuPaAddressUsage
   ?$top=10
   &$filter=AddressUsage ne 'XXDEFAULT'
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4/A_Product
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_Product
   ?$top=10
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4/A_SalesOrder
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_SalesOrder
   ?$top=10
   &$expand=to_Item,to_Partner($expand=to_Address)
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/sap.s4/A_CompanyCode
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_CompanyCode
   ?$top=10
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/my.erp.so
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.so
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/my.erp.so/$metadata
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.so/$metadata
 Authorization: Bearer {{access_token}}
 
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/my.erp.so/ZA_SalesOrderHeaderPartner
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.so/ZA_SalesOrderHeaderPartner
   ?$filter=PartnerFunction eq 'ZZ'
   &$top=10
 Authorization: Bearer {{access_token}}
 
 ###
-GET {{$dotenv graph_uri}}/api/{{$dotenv name}}/my.erp.so/ZA_SalesOrder
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.so/ZA_SalesOrder
   ?$top=10
   &$filter=SalesOrder eq '{{$dotenv SalesOrder}}'
   &$expand=to_Item($select=FunctionalLocation),to_Partner($expand=to_Address($select=Country,FullName))
