@@ -80,11 +80,14 @@ Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_BuPaAddressUsage
   ?$top=10
+  &$count=true
   &$filter=AddressUsage ne 'XXDEFAULT'
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_Product
   ?$top=10
+  &$select=Product,Brand,CountryOfOrigin
+  &$count=true
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_SalesOrder
