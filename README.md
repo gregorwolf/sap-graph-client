@@ -24,7 +24,10 @@ graph_uri=
 graph_name=s4hc
 ```
 
-Test the Graph with the REST Client Script in `test/graph.http`
+Test the Graph with the REST Client Scripts for
+
+- OData V4: `test/graph-odata.http`
+- GraphQL: `test/graph-graphql.http`
 
 ## Client
 
