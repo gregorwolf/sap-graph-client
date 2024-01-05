@@ -1,0 +1,73 @@
+### Get Access Token (Cloud Foundry using Client Credentials)
+# @name requestAccessToken
+POST {{$dotenv graph_tokenendpoint}}/oauth/token
+Authorization: Basic {{$dotenv graph_clientid}}:{{$dotenv graph_clientsecret}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&response_type=token
+
+### Fill Variables from Response
+@access_token = {{requestAccessToken.response.body.$.access_token}}
+### Introspection
+POST {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/graphql
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  __schema {
+    types {
+      name
+    }
+  }
+}
+### Introspection
+POST {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/graphql
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  __type(name: "sap_s4_A_Product") {
+    name
+    kind
+    fields {
+      name
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
+###
+POST {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/graphql
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query {
+  sap_s4 {
+    A_Product (
+      top: 10
+      skip: 10
+      orderBy: [
+        {
+          WeightUnit: desc 
+        }
+        { 
+          GrossWeight: desc 
+        }
+      ]
+    ) {
+      nodes {
+        Product
+        GrossWeight
+        WeightUnit
+        Brand
+        CountryOfOrigin
+      }
+    }
+  }
+}
