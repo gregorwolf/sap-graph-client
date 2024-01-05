@@ -9,7 +9,8 @@ grant_type=client_credentials
 
 ### Fill Variables from Response
 @access_token = {{requestAccessToken.response.body.$.access_token}}
-
+# Use Access Token from external source
+#@access_token=
 
 ###
 GET {{$dotenv graph_uri}}
@@ -67,6 +68,8 @@ Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_BusinessPartner
   ?$top=10
+  &$skip=10
+  &$count=true
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_BusinessPartnerAddress
