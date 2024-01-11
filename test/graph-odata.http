@@ -22,26 +22,6 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/
-Authorization: Bearer {{access_token}}
-###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_BusinessPartner
-Authorization: Bearer {{access_token}}
-###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_Customer
-Authorization: Bearer {{access_token}}
-###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_Supplier
-Authorization: Bearer {{access_token}}
-###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_BusinessPartnerAddress
-Authorization: Bearer {{access_token}}
-### URL from the OpenAPI specification
-### returns:
-### cannot route request, no match found for path /catalog/my.erp.bp
-GET https://eu10.graph.sap/catalog/my.erp.bp
-Authorization: Bearer {{access_token}}
-###
 GET {{$dotenv graph_uri}}/api
 Authorization: Bearer {{access_token}}
 ###
@@ -97,6 +77,28 @@ Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_CompanyCode
   ?$top=10
+Authorization: Bearer {{access_token}}
+###
+### SAP ERP Backend requests
+###
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_BusinessPartner
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_Customer
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_Supplier
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/ZA_BusinessPartnerAddress
+Authorization: Bearer {{access_token}}
+### URL from the OpenAPI specification
+### returns:
+### cannot route request, no match found for path /catalog/my.erp.bp
+GET https://eu10.graph.sap/catalog/my.erp.bp
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.so
