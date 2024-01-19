@@ -10,7 +10,7 @@ grant_type=client_credentials
 ### Fill Variables from Response
 @access_token = {{requestAccessToken.response.body.$.access_token}}
 # Use Access Token from external source
-#@access_token=
+#@access_token={{$dotenv token}}
 
 ###
 GET {{$dotenv graph_uri}}
