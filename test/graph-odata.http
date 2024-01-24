@@ -107,6 +107,11 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.bp/$metadata
 Authorization: Bearer {{access_token}}
 ###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.bp/ZA_BusinessPartner
+  ?$top=10
+  &$count=true
+Authorization: Bearer {{access_token}}
+###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.so
 Authorization: Bearer {{access_token}}
 ###
