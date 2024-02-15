@@ -1,0 +1,33 @@
+{
+  "businessDataGraphIdentifier": "s4hcso",
+  "description": "S/4HANA Cloud Sales Order Management",
+  "graphModelVersion": "^v3",
+  "schemaVersion": "1.2.0",
+  "dataSources": [
+    {
+      "name": "s4",
+      "services": [
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+        }
+      ]
+    }
+  ],
+  "locatingPolicy": {
+    "cues": [],
+    "rules": [
+      {
+        "name": "sap.s4.*",
+        "leading": "s4",
+        "local": []
+      },
+      {
+        "name": "sap.graph.*",
+        "leading": "s4",
+        "local": []
+      }
+    ]
+  },
+  "effectiveGraphModelVersion": "3.1.0"
+}
