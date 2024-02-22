@@ -135,3 +135,14 @@ GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.erp.so/ZA_SalesOrder
   // The OData V2 API for entity 'ZA_SalesOrder' does not support $filter or $orderby on expanded properties.
   &$select=SalesOrder
 Authorization: Bearer {{access_token}}
+### EPM
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.epm/$metadata
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.epm/
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.epm/Suppliers
+  ?$top=10
+Authorization: Bearer {{access_token}}
