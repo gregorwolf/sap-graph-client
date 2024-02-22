@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="my.a4h.epm" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="Suppliers" EntityType="my.a4h.epm.Suppliers"/>
+        <EntitySet Name="Products" EntityType="my.a4h.epm.Products">
+          <NavigationPropertyBinding Path="Supplier" Target="Suppliers"/>
+        </EntitySet>
+        <EntitySet Name="ProductDrafts" EntityType="my.a4h.epm.ProductDrafts">
+          <NavigationPropertyBinding Path="Images" Target="ImageDrafts"/>
+          <NavigationPropertyBinding Path="SubCategory" Target="SubCategories"/>
+        </EntitySet>
+        <EntitySet Name="ImageDrafts" EntityType="my.a4h.epm.ImageDrafts"/>
+        <EntitySet Name="MainCategories" EntityType="my.a4h.epm.MainCategories">
+          <NavigationPropertyBinding Path="SubCategories" Target="SubCategories"/>
+        </EntitySet>
+        <EntitySet Name="SubCategories" EntityType="my.a4h.epm.SubCategories">
+          <NavigationPropertyBinding Path="MainCategory" Target="MainCategories"/>
+        </EntitySet>
+        <EntitySet Name="Currencies" EntityType="my.a4h.epm.Currencies"/>
+        <EntitySet Name="DimensionUnits" EntityType="my.a4h.epm.DimensionUnits"/>
+        <EntitySet Name="QuantityUnits" EntityType="my.a4h.epm.QuantityUnits"/>
+        <EntitySet Name="WeightUnits" EntityType="my.a4h.epm.WeightUnits"/>
+      </EntityContainer>
+      <EntityType Name="Suppliers">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="80" Nullable="false"/>
+        <Property Name="Phone" Type="Edm.String" MaxLength="30" Nullable="false"/>
+        <Property Name="Email" Type="Edm.String" MaxLength="255" Nullable="false"/>
+        <Property Name="WebAddress" Type="Edm.String" Nullable="false"/>
+        <Property Name="FormattedAddress" Type="Edm.String" MaxLength="129" Nullable="false"/>
+        <Property Name="FormattedContactName" Type="Edm.String" MaxLength="81" Nullable="false"/>
+        <Property Name="ContactPhone1" Type="Edm.String" MaxLength="30" Nullable="false"/>
+        <Property Name="ContactPhone2" Type="Edm.String" MaxLength="30" Nullable="false"/>
+        <Property Name="ContactEmail" Type="Edm.String" MaxLength="255" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="Products">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" Nullable="false"/>
+        <Property Name="StockQuantity" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="255" Nullable="false"/>
+        <Property Name="Description" Type="Edm.String" MaxLength="255" Nullable="false"/>
+        <Property Name="SubCategoryId" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="SubCategoryName" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="MainCategoryId" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="MainCategoryName" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="SupplierId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="SupplierName" Type="Edm.String" MaxLength="80" Nullable="false"/>
+        <Property Name="LastModified" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="Price" Type="Edm.Decimal" Scale="2" Precision="15" Nullable="false"/>
+        <Property Name="DimensionHeight" Type="Edm.Decimal" Scale="3" Precision="13" Nullable="false"/>
+        <Property Name="DimensionWidth" Type="Edm.Decimal" Scale="3" Precision="13" Nullable="false"/>
+        <Property Name="DimensionDepth" Type="Edm.Decimal" Scale="3" Precision="13" Nullable="false"/>
+        <Property Name="DimensionUnit" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="ImageUrl" Type="Edm.String" MaxLength="255" Nullable="false"/>
+        <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3" Nullable="false"/>
+        <Property Name="MeasureUnit" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="AverageRating" Type="Edm.Decimal" Scale="2" Precision="4" Nullable="false"/>
+        <Property Name="RatingCount" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="WeightMeasure" Type="Edm.Decimal" Scale="3" Precision="13" Nullable="false"/>
+        <Property Name="WeightUnit" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <NavigationProperty Name="Supplier" Type="my.a4h.epm.Suppliers">
+          <ReferentialConstraint Property="SupplierId" ReferencedProperty="Id"/>
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="ProductDrafts">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="LastModified" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="IsNewProduct" Type="Edm.Boolean"/>
+        <Property Name="IsDirty" Type="Edm.Boolean"/>
+        <Property Name="ProductId" Type="Edm.String" MaxLength="10"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="Description" Type="Edm.String" MaxLength="255"/>
+        <Property Name="DimensionUnit" Type="Edm.String" MaxLength="3"/>
+        <Property Name="DimensionHeight" Type="Edm.Decimal" Scale="3" Precision="13"/>
+        <Property Name="DimensionWidth" Type="Edm.Decimal" Scale="3" Precision="13"/>
+        <Property Name="DimensionDepth" Type="Edm.Decimal" Scale="3" Precision="13"/>
+        <Property Name="WeightUnit" Type="Edm.String" MaxLength="3"/>
+        <Property Name="WeightMeasure" Type="Edm.Decimal" Scale="3" Precision="13"/>
+        <Property Name="Price" Type="Edm.Decimal" Scale="2" Precision="15"/>
+        <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5"/>
+        <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3"/>
+        <Property Name="ImageUrl" Type="Edm.String" MaxLength="255"/>
+        <Property Name="SupplierId" Type="Edm.String" MaxLength="10"/>
+        <Property Name="SupplierName" Type="Edm.String" MaxLength="80"/>
+        <Property Name="SubCategoryId" Type="Edm.String" MaxLength="40"/>
+        <Property Name="SubCategoryName" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="MainCategoryId" Type="Edm.String" MaxLength="40"/>
+        <Property Name="MainCategoryName" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" Nullable="false"/>
+        <Property Name="ExpiresAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <NavigationProperty Name="Images" Type="Collection(my.a4h.epm.ImageDrafts)"/>
+        <NavigationProperty Name="SubCategory" Type="my.a4h.epm.SubCategories">
+          <ReferentialConstraint Property="SubCategoryId" ReferencedProperty="Id"/>
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="ImageDrafts">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="CreatedBy" Type="Edm.String" MaxLength="81" Nullable="false"/>
+        <Property Name="FileName" Type="Edm.String" MaxLength="255" Nullable="false"/>
+        <Property Name="IsDeletable" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="IsModifiable" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="LastModified" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="ProductId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="MimeType" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+        <Property Name="blob" Type="Edm.Stream"/>
+      </EntityType>
+      <EntityType Name="MainCategories">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <NavigationProperty Name="SubCategories" Type="Collection(my.a4h.epm.SubCategories)"/>
+      </EntityType>
+      <EntityType Name="SubCategories">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="MainCategoryId" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="MainCategoryName" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <NavigationProperty Name="MainCategory" Type="my.a4h.epm.MainCategories">
+          <ReferentialConstraint Property="MainCategoryId" ReferencedProperty="Id"/>
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="Currencies">
+        <Key>
+          <PropertyRef Name="Code"/>
+        </Key>
+        <Property Name="Code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+        <Property Name="Text" Type="Edm.String" MaxLength="40" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="DimensionUnits">
+        <Key>
+          <PropertyRef Name="Unit"/>
+        </Key>
+        <Property Name="Unit" Type="Edm.String" MaxLength="3" Nullable="false"/>
+        <Property Name="Shorttext" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="Text" Type="Edm.String" MaxLength="30" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="QuantityUnits">
+        <Key>
+          <PropertyRef Name="Unit"/>
+        </Key>
+        <Property Name="Unit" Type="Edm.String" MaxLength="3" Nullable="false"/>
+        <Property Name="Shorttext" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="Text" Type="Edm.String" MaxLength="30" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="WeightUnits">
+        <Key>
+          <PropertyRef Name="Unit"/>
+        </Key>
+        <Property Name="Unit" Type="Edm.String" MaxLength="3" Nullable="false"/>
+        <Property Name="Shorttext" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="Text" Type="Edm.String" MaxLength="30" Nullable="false"/>
+      </EntityType>
+      <Action Name="EditProduct" IsBound="true">
+        <Parameter Name="in" Type="my.a4h.epm.Products"/>
+        <ReturnType Type="my.a4h.epm.ProductDrafts"/>
+      </Action>
+      <Action Name="CopyProduct" IsBound="true">
+        <Parameter Name="in" Type="my.a4h.epm.Products"/>
+        <ReturnType Type="my.a4h.epm.ProductDrafts"/>
+      </Action>
+      <Action Name="ActivateProduct" IsBound="true">
+        <Parameter Name="in" Type="my.a4h.epm.ProductDrafts"/>
+        <ReturnType Type="my.a4h.epm.Products"/>
+      </Action>
+      <Annotation Term="Core.SchemaVersion" String="1"/>
+      <Annotations Target="my.a4h.epm.EntityContainer">
+        <Annotation Term="Capabilities.KeyAsSegmentSupported" Bool="true"/>
+        <Annotation Term="Common.Label" String="Graph service for my.a4h.epm"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/Suppliers">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.FilterRestrictions">
+          <Record Type="Capabilities.FilterRestrictionsType">
+            <PropertyValue Property="NonFilterableProperties">
+              <Collection>
+                <PropertyPath>Id</PropertyPath>
+                <PropertyPath>Name</PropertyPath>
+                <PropertyPath>Phone</PropertyPath>
+                <PropertyPath>Email</PropertyPath>
+                <PropertyPath>WebAddress</PropertyPath>
+                <PropertyPath>FormattedAddress</PropertyPath>
+                <PropertyPath>FormattedContactName</PropertyPath>
+                <PropertyPath>ContactPhone1</PropertyPath>
+                <PropertyPath>ContactPhone2</PropertyPath>
+                <PropertyPath>ContactEmail</PropertyPath>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/Id">
+        <Annotation Term="Common.Label" String="Supplier"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/Name">
+        <Annotation Term="Common.Label" String="Supplier Name"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/Phone">
+        <Annotation Term="Common.Label" String="Phone"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/Email">
+        <Annotation Term="Common.Label" String="Email"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/WebAddress">
+        <Annotation Term="Common.Label" String="URI"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/FormattedAddress">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/FormattedContactName">
+        <Annotation Term="Common.Label" String="Contact Person Name"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/ContactPhone1">
+        <Annotation Term="Common.Label" String="Contact Person Tel"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/ContactPhone2">
+        <Annotation Term="Common.Label" String="Contact Person Fax"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Suppliers/ContactEmail">
+        <Annotation Term="Common.Label" String="Contact Person Mail"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/Products">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/Id">
+        <Annotation Term="Common.Label" String="Product"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/CurrencyCode">
+        <Annotation Term="Common.Label" String="Currency"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/StockQuantity">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/Name">
+        <Annotation Term="Common.Label" String="Name"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/Description">
+        <Annotation Term="Common.Label" String="Description"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/SubCategoryId">
+        <Annotation Term="Common.Label" String="Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/SubCategoryName">
+        <Annotation Term="Common.Label" String="Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/MainCategoryId">
+        <Annotation Term="Common.Label" String="Main Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/MainCategoryName">
+        <Annotation Term="Common.Label" String="Main Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/SupplierId">
+        <Annotation Term="Common.Label" String="Supplier"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/SupplierName">
+        <Annotation Term="Common.Label" String="Supplier Name"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/LastModified">
+        <Annotation Term="Common.Label" String="Last Changed"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/Price">
+        <Annotation Term="Common.Label" String="Price per Unit"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/DimensionHeight">
+        <Annotation Term="Common.Label" String="Height"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/DimensionWidth">
+        <Annotation Term="Common.Label" String="Width"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/DimensionDepth">
+        <Annotation Term="Common.Label" String="Depth"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/DimensionUnit">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/ImageUrl">
+        <Annotation Term="Common.Label" String="Image"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/QuantityUnit">
+        <Annotation Term="Common.Label" String="Base Unit"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/MeasureUnit">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/AverageRating">
+        <Annotation Term="Common.Label" String="Average Rating"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/RatingCount">
+        <Annotation Term="Common.Label" String="Number of Reviews"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/WeightMeasure">
+        <Annotation Term="Common.Label" String="Weight"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Products/WeightUnit">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/ProductDrafts">
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/Id">
+        <Annotation Term="Common.Label" String="Product"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/LastModified">
+        <Annotation Term="Common.Label" String="Last Changed"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/IsNewProduct">
+        <Annotation Term="Common.Label" String="TRUE"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/IsDirty">
+        <Annotation Term="Common.Label" String="TRUE"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/ProductId">
+        <Annotation Term="Common.Label" String="Product"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/Name">
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/Description">
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/DimensionUnit">
+        <Annotation Term="Common.Label" String="Dimension Unit"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/DimensionHeight">
+        <Annotation Term="Common.Label" String="Height"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/DimensionWidth">
+        <Annotation Term="Common.Label" String="Width"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/DimensionDepth">
+        <Annotation Term="Common.Label" String="Depth"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/WeightUnit">
+        <Annotation Term="Common.Label" String="Weight Unit"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/WeightMeasure">
+        <Annotation Term="Common.Label" String="Weight"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/Price">
+        <Annotation Term="Common.Label" String="Price"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/CurrencyCode">
+        <Annotation Term="Common.Label" String="Currency"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/QuantityUnit">
+        <Annotation Term="Common.Label" String="Base Unit"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/ImageUrl">
+        <Annotation Term="Common.Label" String="Image"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/SupplierId">
+        <Annotation Term="Common.Label" String="Supplier"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/SupplierName">
+        <Annotation Term="Common.Label" String="Supplier Name"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/SubCategoryId">
+        <Annotation Term="Common.Label" String="Category"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/SubCategoryName">
+        <Annotation Term="Common.Label" String="Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/MainCategoryId">
+        <Annotation Term="Common.Label" String="Category"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/MainCategoryName">
+        <Annotation Term="Common.Label" String="Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/CreatedAt">
+        <Annotation Term="Common.Label" String="Time Stamp"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).&#xA;&#xA;In order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.&#xA;Even if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.&#xA;The internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.&#xA;See also GET TIME STAMP&#xA;A UTC time stamp in short form is also available."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/CreatedBy">
+        <Annotation Term="Common.Label" String="Chgd by"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="Name of the user who logged on."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ProductDrafts/ExpiresAt">
+        <Annotation Term="Common.Label" String="Time Stamp"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).&#xA;&#xA;In order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.&#xA;Even if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.&#xA;The internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.&#xA;See also GET TIME STAMP&#xA;A UTC time stamp in short form is also available."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/ImageDrafts">
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/Id">
+        <Annotation Term="Common.Label" String="Node Key"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/CreatedBy">
+        <Annotation Term="Common.Label" String="Created by"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/FileName">
+        <Annotation Term="Common.Label" String="Image File Name"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/IsDeletable">
+        <Annotation Term="Common.Label" String="Is deletable"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/IsModifiable">
+        <Annotation Term="Common.Label" String="Is modifiable"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/LastModified">
+        <Annotation Term="Common.Label" String="Time Stamp"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).&#xA;&#xA;In order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.&#xA;Even if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.&#xA;The internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.&#xA;See also GET TIME STAMP&#xA;A UTC time stamp in short form is also available."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/ProductId">
+        <Annotation Term="Common.Label" String="Product ID"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/MimeType">
+        <Annotation Term="Common.Label" String="Mime Type"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/CreatedAt">
+        <Annotation Term="Common.Label" String="Time Stamp"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).&#xA;&#xA;In order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.&#xA;Even if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.&#xA;The internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.&#xA;See also GET TIME STAMP&#xA;A UTC time stamp in short form is also available."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.ImageDrafts/blob">
+        <Annotation Term="Core.MediaType" String="application/octet-stream"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/MainCategories">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.MainCategories/Id">
+        <Annotation Term="Common.Label" String="Main Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.MainCategories/Name">
+        <Annotation Term="Common.Label" String="Main Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.MainCategories/SubCategories">
+        <Annotation Term="Common.Label" String="Sub-Categories"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/SubCategories">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.SubCategories/Id">
+        <Annotation Term="Common.Label" String="Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.SubCategories/Name">
+        <Annotation Term="Common.Label" String="Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.SubCategories/MainCategoryId">
+        <Annotation Term="Common.Label" String="Main Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.SubCategories/MainCategoryName">
+        <Annotation Term="Common.Label" String="Main Category"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/Currencies">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Currencies/Code">
+        <Annotation Term="Common.Label" String="ISO Code"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="International standardized currency key&#xA;&#xA;Enter the ISO code&#xA;if you do not already use the global standard currency key as the currency key&#xA;if you use the EDI application. Here the ISO code is used for exchanging information."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.Currencies/Text">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/DimensionUnits">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.DimensionUnits/Unit">
+        <Annotation Term="Common.Label" String="ISO code"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.&#xA;&#xA;The ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.&#xA;A list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):&#xA;UN Economic Commission for Europe&#xA;Information Office&#xA;Palais des Nations&#xA;1211 Geneva&#xA;Switzerland&#xA;e-mail: info.ece@unece.org&#xA;or viewed directly on the Internet:&#xA; http://www.unece.org/cefact/codesfortrade/codes_index.htm&#xA;For more information, see SAP Note 69063."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.DimensionUnits/Shorttext">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.DimensionUnits/Text">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/QuantityUnits">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.QuantityUnits/Unit">
+        <Annotation Term="Common.Label" String="ISO code"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.&#xA;&#xA;The ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.&#xA;A list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):&#xA;UN Economic Commission for Europe&#xA;Information Office&#xA;Palais des Nations&#xA;1211 Geneva&#xA;Switzerland&#xA;e-mail: info.ece@unece.org&#xA;or viewed directly on the Internet:&#xA; http://www.unece.org/cefact/codesfortrade/codes_index.htm&#xA;For more information, see SAP Note 69063."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.QuantityUnits/Shorttext">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.QuantityUnits/Text">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.EntityContainer/WeightUnits">
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.WeightUnits/Unit">
+        <Annotation Term="Common.Label" String="ISO code"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.&#xA;&#xA;The ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.&#xA;A list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):&#xA;UN Economic Commission for Europe&#xA;Information Office&#xA;Palais des Nations&#xA;1211 Geneva&#xA;Switzerland&#xA;e-mail: info.ece@unece.org&#xA;or viewed directly on the Internet:&#xA; http://www.unece.org/cefact/codesfortrade/codes_index.htm&#xA;For more information, see SAP Note 69063."/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.WeightUnits/Shorttext">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="my.a4h.epm.WeightUnits/Text">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
