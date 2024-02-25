@@ -13,6 +13,16 @@
           "path": "/sap/opu/odata/sap/EPM_REF_APPS_PROD_MAN_SRV"
         }
       ]
+    },
+    {
+      "name": "my.a4h.user",
+      "namespace": "my.a4h.user",
+      "services": [
+        {
+          "destinationName": "SAP_ABAP_BACKEND",
+          "path": "/sap/opu/odata/sap/ZAPI_USER_NAME_SRV"
+        }
+      ]
     }
   ],
   "locatingPolicy": {
@@ -21,6 +31,13 @@
       {
         "name": "my.a4h.epm.*",
         "leading": "my.a4h.epm",
+        "local": [],
+        "cues": [],
+        "sourceEntity": null
+      },
+      {
+        "name": "my.a4h.user.*",
+        "leading": "my.a4h.user",
         "local": [],
         "cues": [],
         "sourceEntity": null
