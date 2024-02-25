@@ -1,0 +1,3753 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Service for namespace my.a4h.epm",
+    "description": "This service is located at [https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/a4h/my.a4h.epm//](https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/a4h/my.a4h.epm//)\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Suppliers{bg:dodgerblue}]++-*>[Suppliers],[Products{bg:dodgerblue}]++-*>[Products],[ProductDrafts{bg:dodgerblue}]++-*>[ProductDrafts],[ImageDrafts{bg:dodgerblue}]++-*>[ImageDrafts],[MainCategories{bg:dodgerblue}]++-*>[MainCategories],[SubCategories{bg:dodgerblue}]++-*>[SubCategories],[Currencies{bg:dodgerblue}]++-*>[Currencies],[DimensionUnits{bg:dodgerblue}]++-*>[DimensionUnits],[QuantityUnits{bg:dodgerblue}]++-*>[QuantityUnits],[WeightUnits{bg:dodgerblue}]++-*>[WeightUnits],[Suppliers{bg:orange}],[Products{bg:orange}],[Products]-0..1>[Suppliers{bg:orange}],[ProductDrafts{bg:orange}],[ProductDrafts]-*>[ImageDrafts{bg:orange}],[ProductDrafts]-0..1>[SubCategories{bg:orange}],[ImageDrafts{bg:orange}],[MainCategories{bg:orange}],[MainCategories]-*>[SubCategories{bg:orange}],[SubCategories{bg:orange}],[SubCategories]-0..1>[MainCategories{bg:orange}],[Currencies{bg:orange}],[DimensionUnits{bg:orange}],[QuantityUnits{bg:orange}],[WeightUnits{bg:orange}])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:orange}],[EntitySet/Singleton/Operation{bg:dodgerblue}])",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/a4h/my.a4h.epm/"
+    }
+  ],
+  "paths": {
+    "/Suppliers": {
+      "get": {
+        "tags": ["Suppliers"],
+        "summary": "Get entities from Suppliers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "Name",
+                  "Name desc",
+                  "Phone",
+                  "Phone desc",
+                  "Email",
+                  "Email desc",
+                  "WebAddress",
+                  "WebAddress desc",
+                  "FormattedAddress",
+                  "FormattedAddress desc",
+                  "FormattedContactName",
+                  "FormattedContactName desc",
+                  "ContactPhone1",
+                  "ContactPhone1 desc",
+                  "ContactPhone2",
+                  "ContactPhone2 desc",
+                  "ContactEmail",
+                  "ContactEmail desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Name",
+                  "Phone",
+                  "Email",
+                  "WebAddress",
+                  "FormattedAddress",
+                  "FormattedContactName",
+                  "ContactPhone1",
+                  "ContactPhone2",
+                  "ContactEmail"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Suppliers",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.Suppliers"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Suppliers('{Id}')": {
+      "get": {
+        "tags": ["Suppliers"],
+        "summary": "Get entity from Suppliers by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Name",
+                  "Phone",
+                  "Email",
+                  "WebAddress",
+                  "FormattedAddress",
+                  "FormattedContactName",
+                  "ContactPhone1",
+                  "ContactPhone2",
+                  "ContactEmail"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.Suppliers"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Supplier",
+          "required": true,
+          "schema": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/Products": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get entities from Products",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "CurrencyCode",
+                  "CurrencyCode desc",
+                  "StockQuantity",
+                  "StockQuantity desc",
+                  "Name",
+                  "Name desc",
+                  "Description",
+                  "Description desc",
+                  "SubCategoryId",
+                  "SubCategoryId desc",
+                  "SubCategoryName",
+                  "SubCategoryName desc",
+                  "MainCategoryId",
+                  "MainCategoryId desc",
+                  "MainCategoryName",
+                  "MainCategoryName desc",
+                  "SupplierId",
+                  "SupplierId desc",
+                  "SupplierName",
+                  "SupplierName desc",
+                  "LastModified",
+                  "LastModified desc",
+                  "Price",
+                  "Price desc",
+                  "DimensionHeight",
+                  "DimensionHeight desc",
+                  "DimensionWidth",
+                  "DimensionWidth desc",
+                  "DimensionDepth",
+                  "DimensionDepth desc",
+                  "DimensionUnit",
+                  "DimensionUnit desc",
+                  "ImageUrl",
+                  "ImageUrl desc",
+                  "QuantityUnit",
+                  "QuantityUnit desc",
+                  "MeasureUnit",
+                  "MeasureUnit desc",
+                  "AverageRating",
+                  "AverageRating desc",
+                  "RatingCount",
+                  "RatingCount desc",
+                  "WeightMeasure",
+                  "WeightMeasure desc",
+                  "WeightUnit",
+                  "WeightUnit desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "CurrencyCode",
+                  "StockQuantity",
+                  "Name",
+                  "Description",
+                  "SubCategoryId",
+                  "SubCategoryName",
+                  "MainCategoryId",
+                  "MainCategoryName",
+                  "SupplierId",
+                  "SupplierName",
+                  "LastModified",
+                  "Price",
+                  "DimensionHeight",
+                  "DimensionWidth",
+                  "DimensionDepth",
+                  "DimensionUnit",
+                  "ImageUrl",
+                  "QuantityUnit",
+                  "MeasureUnit",
+                  "AverageRating",
+                  "RatingCount",
+                  "WeightMeasure",
+                  "WeightUnit"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "Supplier"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Products",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.Products"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Products('{Id}')": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get entity from Products by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "CurrencyCode",
+                  "StockQuantity",
+                  "Name",
+                  "Description",
+                  "SubCategoryId",
+                  "SubCategoryName",
+                  "MainCategoryId",
+                  "MainCategoryName",
+                  "SupplierId",
+                  "SupplierName",
+                  "LastModified",
+                  "Price",
+                  "DimensionHeight",
+                  "DimensionWidth",
+                  "DimensionDepth",
+                  "DimensionUnit",
+                  "ImageUrl",
+                  "QuantityUnit",
+                  "MeasureUnit",
+                  "AverageRating",
+                  "RatingCount",
+                  "WeightMeasure",
+                  "WeightUnit"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "Supplier"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.Products"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Product",
+          "required": true,
+          "schema": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/Products('{Id}')/my.a4h.epm.EditProduct": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Invoke action EditProduct",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Product",
+            "required": true,
+            "schema": {
+              "maxLength": 10,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/my.a4h.epm.ProductDrafts"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Products('{Id}')/my.a4h.epm.CopyProduct": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Invoke action CopyProduct",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Product",
+            "required": true,
+            "schema": {
+              "maxLength": 10,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/my.a4h.epm.ProductDrafts"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Products('{Id}')/Supplier": {
+      "get": {
+        "tags": ["Products", "Suppliers"],
+        "summary": "Get related Supplier",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Name",
+                  "Phone",
+                  "Email",
+                  "WebAddress",
+                  "FormattedAddress",
+                  "FormattedContactName",
+                  "ContactPhone1",
+                  "ContactPhone2",
+                  "ContactEmail"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.Suppliers"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Product",
+          "required": true,
+          "schema": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/ProductDrafts": {
+      "get": {
+        "tags": ["ProductDrafts"],
+        "summary": "Get entities from ProductDrafts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "LastModified",
+                  "LastModified desc",
+                  "IsNewProduct",
+                  "IsNewProduct desc",
+                  "IsDirty",
+                  "IsDirty desc",
+                  "ProductId",
+                  "ProductId desc",
+                  "Name",
+                  "Name desc",
+                  "Description",
+                  "Description desc",
+                  "DimensionUnit",
+                  "DimensionUnit desc",
+                  "DimensionHeight",
+                  "DimensionHeight desc",
+                  "DimensionWidth",
+                  "DimensionWidth desc",
+                  "DimensionDepth",
+                  "DimensionDepth desc",
+                  "WeightUnit",
+                  "WeightUnit desc",
+                  "WeightMeasure",
+                  "WeightMeasure desc",
+                  "Price",
+                  "Price desc",
+                  "CurrencyCode",
+                  "CurrencyCode desc",
+                  "QuantityUnit",
+                  "QuantityUnit desc",
+                  "ImageUrl",
+                  "ImageUrl desc",
+                  "SupplierId",
+                  "SupplierId desc",
+                  "SupplierName",
+                  "SupplierName desc",
+                  "SubCategoryId",
+                  "SubCategoryId desc",
+                  "SubCategoryName",
+                  "SubCategoryName desc",
+                  "MainCategoryId",
+                  "MainCategoryId desc",
+                  "MainCategoryName",
+                  "MainCategoryName desc",
+                  "CreatedAt",
+                  "CreatedAt desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "ExpiresAt",
+                  "ExpiresAt desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "LastModified",
+                  "IsNewProduct",
+                  "IsDirty",
+                  "ProductId",
+                  "Name",
+                  "Description",
+                  "DimensionUnit",
+                  "DimensionHeight",
+                  "DimensionWidth",
+                  "DimensionDepth",
+                  "WeightUnit",
+                  "WeightMeasure",
+                  "Price",
+                  "CurrencyCode",
+                  "QuantityUnit",
+                  "ImageUrl",
+                  "SupplierId",
+                  "SupplierName",
+                  "SubCategoryId",
+                  "SubCategoryName",
+                  "MainCategoryId",
+                  "MainCategoryName",
+                  "CreatedAt",
+                  "CreatedBy",
+                  "ExpiresAt"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "Images", "SubCategory"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of ProductDrafts",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.ProductDrafts"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["ProductDrafts"],
+        "summary": "Add new entity to ProductDrafts",
+        "requestBody": {
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/my.a4h.epm.ProductDrafts-create"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.ProductDrafts"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ProductDrafts('{Id}')": {
+      "get": {
+        "tags": ["ProductDrafts"],
+        "summary": "Get entity from ProductDrafts by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "LastModified",
+                  "IsNewProduct",
+                  "IsDirty",
+                  "ProductId",
+                  "Name",
+                  "Description",
+                  "DimensionUnit",
+                  "DimensionHeight",
+                  "DimensionWidth",
+                  "DimensionDepth",
+                  "WeightUnit",
+                  "WeightMeasure",
+                  "Price",
+                  "CurrencyCode",
+                  "QuantityUnit",
+                  "ImageUrl",
+                  "SupplierId",
+                  "SupplierName",
+                  "SubCategoryId",
+                  "SubCategoryName",
+                  "MainCategoryId",
+                  "MainCategoryName",
+                  "CreatedAt",
+                  "CreatedBy",
+                  "ExpiresAt"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "Images", "SubCategory"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.ProductDrafts"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["ProductDrafts"],
+        "summary": "Update entity in ProductDrafts",
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/my.a4h.epm.ProductDrafts-update"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["ProductDrafts"],
+        "summary": "Delete entity from ProductDrafts",
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Product",
+          "required": true,
+          "schema": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/ProductDrafts('{Id}')/my.a4h.epm.ActivateProduct": {
+      "post": {
+        "tags": ["ProductDrafts"],
+        "summary": "Invoke action ActivateProduct",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Product",
+            "required": true,
+            "schema": {
+              "maxLength": 10,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/my.a4h.epm.Products"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ProductDrafts('{Id}')/Images": {
+      "get": {
+        "tags": ["ProductDrafts", "ImageDrafts"],
+        "summary": "Get entities from related Images",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "FileName",
+                  "FileName desc",
+                  "IsDeletable",
+                  "IsDeletable desc",
+                  "IsModifiable",
+                  "IsModifiable desc",
+                  "LastModified",
+                  "LastModified desc",
+                  "ProductId",
+                  "ProductId desc",
+                  "MimeType",
+                  "MimeType desc",
+                  "CreatedAt",
+                  "CreatedAt desc",
+                  "blob",
+                  "blob desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "CreatedBy",
+                  "FileName",
+                  "IsDeletable",
+                  "IsModifiable",
+                  "LastModified",
+                  "ProductId",
+                  "MimeType",
+                  "CreatedAt",
+                  "blob"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of ImageDrafts",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["ProductDrafts", "ImageDrafts"],
+        "summary": "Add new entity to related Images",
+        "requestBody": {
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts-create"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Product",
+          "required": true,
+          "schema": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/ProductDrafts('{Id}')/SubCategory": {
+      "get": {
+        "tags": ["ProductDrafts", "SubCategories"],
+        "summary": "Get related SubCategory",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Name", "MainCategoryId", "MainCategoryName"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "MainCategory"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.SubCategories"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Product",
+          "required": true,
+          "schema": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/ImageDrafts": {
+      "get": {
+        "tags": ["ImageDrafts"],
+        "summary": "Get entities from ImageDrafts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "FileName",
+                  "FileName desc",
+                  "IsDeletable",
+                  "IsDeletable desc",
+                  "IsModifiable",
+                  "IsModifiable desc",
+                  "LastModified",
+                  "LastModified desc",
+                  "ProductId",
+                  "ProductId desc",
+                  "MimeType",
+                  "MimeType desc",
+                  "CreatedAt",
+                  "CreatedAt desc",
+                  "blob",
+                  "blob desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "CreatedBy",
+                  "FileName",
+                  "IsDeletable",
+                  "IsModifiable",
+                  "LastModified",
+                  "ProductId",
+                  "MimeType",
+                  "CreatedAt",
+                  "blob"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of ImageDrafts",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["ImageDrafts"],
+        "summary": "Add new entity to ImageDrafts",
+        "requestBody": {
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts-create"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ImageDrafts({Id})": {
+      "get": {
+        "tags": ["ImageDrafts"],
+        "summary": "Get entity from ImageDrafts by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "CreatedBy",
+                  "FileName",
+                  "IsDeletable",
+                  "IsModifiable",
+                  "LastModified",
+                  "ProductId",
+                  "MimeType",
+                  "CreatedAt",
+                  "blob"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["ImageDrafts"],
+        "summary": "Update entity in ImageDrafts",
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts-update"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["ImageDrafts"],
+        "summary": "Delete entity from ImageDrafts",
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Node Key",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ]
+    },
+    "/MainCategories": {
+      "get": {
+        "tags": ["MainCategories"],
+        "summary": "Get entities from MainCategories",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Id desc", "Name", "Name desc"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Name"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "SubCategories"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of MainCategories",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.MainCategories"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/MainCategories('{Id}')": {
+      "get": {
+        "tags": ["MainCategories"],
+        "summary": "Get entity from MainCategories by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Name"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "SubCategories"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.MainCategories"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Main Category",
+          "required": true,
+          "schema": {
+            "maxLength": 40,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/MainCategories('{Id}')/SubCategories": {
+      "get": {
+        "tags": ["MainCategories", "SubCategories"],
+        "summary": "Get entities from related SubCategories",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "Name",
+                  "Name desc",
+                  "MainCategoryId",
+                  "MainCategoryId desc",
+                  "MainCategoryName",
+                  "MainCategoryName desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Name", "MainCategoryId", "MainCategoryName"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "MainCategory"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of SubCategories",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.SubCategories"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Main Category",
+          "required": true,
+          "schema": {
+            "maxLength": 40,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/SubCategories": {
+      "get": {
+        "tags": ["SubCategories"],
+        "summary": "Get entities from SubCategories",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "Name",
+                  "Name desc",
+                  "MainCategoryId",
+                  "MainCategoryId desc",
+                  "MainCategoryName",
+                  "MainCategoryName desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Name", "MainCategoryId", "MainCategoryName"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "MainCategory"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of SubCategories",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.SubCategories"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SubCategories('{Id}')": {
+      "get": {
+        "tags": ["SubCategories"],
+        "summary": "Get entity from SubCategories by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Name", "MainCategoryId", "MainCategoryName"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "MainCategory"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.SubCategories"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Category",
+          "required": true,
+          "schema": {
+            "maxLength": 40,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/SubCategories('{Id}')/MainCategory": {
+      "get": {
+        "tags": ["SubCategories", "MainCategories"],
+        "summary": "Get related MainCategory",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Id", "Name"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["*", "SubCategories"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.MainCategories"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "description": "Category",
+          "required": true,
+          "schema": {
+            "maxLength": 40,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/Currencies": {
+      "get": {
+        "tags": ["Currencies"],
+        "summary": "Get entities from Currencies",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Code", "Code desc", "Text", "Text desc"],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Code", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Currencies",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.Currencies"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Currencies('{Code}')": {
+      "get": {
+        "tags": ["Currencies"],
+        "summary": "Get entity from Currencies by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Code", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.Currencies"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Code",
+          "in": "path",
+          "description": "International standardized currency key\n\nEnter the ISO code\nif you do not already use the global standard currency key as the currency key\nif you use the EDI application. Here the ISO code is used for exchanging information.",
+          "required": true,
+          "schema": {
+            "maxLength": 3,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/DimensionUnits": {
+      "get": {
+        "tags": ["DimensionUnits"],
+        "summary": "Get entities from DimensionUnits",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Unit",
+                  "Unit desc",
+                  "Shorttext",
+                  "Shorttext desc",
+                  "Text",
+                  "Text desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Unit", "Shorttext", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of DimensionUnits",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.DimensionUnits"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/DimensionUnits('{Unit}')": {
+      "get": {
+        "tags": ["DimensionUnits"],
+        "summary": "Get entity from DimensionUnits by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Unit", "Shorttext", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.DimensionUnits"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Unit",
+          "in": "path",
+          "description": "ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.\n\nThe ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.\nA list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):\nUN Economic Commission for Europe\nInformation Office\nPalais des Nations\n1211 Geneva\nSwitzerland\ne-mail: info.ece@unece.org\nor viewed directly on the Internet:\n http://www.unece.org/cefact/codesfortrade/codes_index.htm\nFor more information, see SAP Note 69063.",
+          "required": true,
+          "schema": {
+            "maxLength": 3,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/QuantityUnits": {
+      "get": {
+        "tags": ["QuantityUnits"],
+        "summary": "Get entities from QuantityUnits",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Unit",
+                  "Unit desc",
+                  "Shorttext",
+                  "Shorttext desc",
+                  "Text",
+                  "Text desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Unit", "Shorttext", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of QuantityUnits",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.QuantityUnits"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/QuantityUnits('{Unit}')": {
+      "get": {
+        "tags": ["QuantityUnits"],
+        "summary": "Get entity from QuantityUnits by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Unit", "Shorttext", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.QuantityUnits"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Unit",
+          "in": "path",
+          "description": "ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.\n\nThe ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.\nA list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):\nUN Economic Commission for Europe\nInformation Office\nPalais des Nations\n1211 Geneva\nSwitzerland\ne-mail: info.ece@unece.org\nor viewed directly on the Internet:\n http://www.unece.org/cefact/codesfortrade/codes_index.htm\nFor more information, see SAP Note 69063.",
+          "required": true,
+          "schema": {
+            "maxLength": 3,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/WeightUnits": {
+      "get": {
+        "tags": ["WeightUnits"],
+        "summary": "Get entities from WeightUnits",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Unit",
+                  "Unit desc",
+                  "Shorttext",
+                  "Shorttext desc",
+                  "Text",
+                  "Text desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Unit", "Shorttext", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of WeightUnits",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.epm.WeightUnits"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/WeightUnits('{Unit}')": {
+      "get": {
+        "tags": ["WeightUnits"],
+        "summary": "Get entity from WeightUnits by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": ["Unit", "Shorttext", "Text"],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.epm.WeightUnits"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "Unit",
+          "in": "path",
+          "description": "ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.\n\nThe ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.\nA list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):\nUN Economic Commission for Europe\nInformation Office\nPalais des Nations\n1211 Geneva\nSwitzerland\ne-mail: info.ece@unece.org\nor viewed directly on the Internet:\n http://www.unece.org/cefact/codesfortrade/codes_index.htm\nFor more information, see SAP Note 69063.",
+          "required": true,
+          "schema": {
+            "maxLength": 3,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/$batch": {
+      "post": {
+        "tags": ["Batch Requests"],
+        "summary": "Send a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "requestBody": {
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Suppliers HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/": {
+      "head": {
+        "summary": "The root of the API, needed for any csrf processing",
+        "operationId": "root/head",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "summary": "The root of the API",
+        "operationId": "root/get",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/$metadata": {
+      "get": {
+        "summary": "$Metadata endpoint",
+        "operationId": "$metadata/get",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "required": ["error"],
+        "type": "object",
+        "properties": {
+          "error": {
+            "required": ["code", "message"],
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "required": ["code", "message"],
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      },
+      "my.a4h.epm.Suppliers": {
+        "title": "Suppliers",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "Supplier",
+            "maxLength": 10,
+            "type": "string"
+          },
+          "Name": {
+            "title": "Supplier Name",
+            "maxLength": 80,
+            "type": "string"
+          },
+          "Phone": {
+            "title": "Phone",
+            "maxLength": 30,
+            "type": "string"
+          },
+          "Email": {
+            "title": "Email",
+            "maxLength": 255,
+            "type": "string"
+          },
+          "WebAddress": {
+            "title": "URI",
+            "type": "string"
+          },
+          "FormattedAddress": {
+            "maxLength": 129,
+            "type": "string"
+          },
+          "FormattedContactName": {
+            "title": "Contact Person Name",
+            "maxLength": 81,
+            "type": "string"
+          },
+          "ContactPhone1": {
+            "title": "Contact Person Tel",
+            "maxLength": 30,
+            "type": "string"
+          },
+          "ContactPhone2": {
+            "title": "Contact Person Fax",
+            "maxLength": 30,
+            "type": "string"
+          },
+          "ContactEmail": {
+            "title": "Contact Person Mail",
+            "maxLength": 255,
+            "type": "string"
+          }
+        }
+      },
+      "my.a4h.epm.Suppliers-create": {
+        "title": "Suppliers (for create)",
+        "type": "object"
+      },
+      "my.a4h.epm.Suppliers-update": {
+        "title": "Suppliers (for update)",
+        "type": "object"
+      },
+      "my.a4h.epm.Products": {
+        "title": "Products",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "Product",
+            "maxLength": 10,
+            "type": "string"
+          },
+          "CurrencyCode": {
+            "title": "Currency",
+            "maxLength": 5,
+            "type": "string"
+          },
+          "StockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Name": {
+            "title": "Name",
+            "maxLength": 255,
+            "type": "string"
+          },
+          "Description": {
+            "title": "Description",
+            "maxLength": 255,
+            "type": "string"
+          },
+          "SubCategoryId": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "SubCategoryName": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "MainCategoryId": {
+            "title": "Main Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "MainCategoryName": {
+            "title": "Main Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "SupplierId": {
+            "title": "Supplier",
+            "maxLength": 10,
+            "type": "string"
+          },
+          "SupplierName": {
+            "title": "Supplier Name",
+            "maxLength": 80,
+            "type": "string"
+          },
+          "LastModified": {
+            "title": "Last Changed",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2017-04-13T15:51:04.0000000+00:00"
+          },
+          "Price": {
+            "title": "Price per Unit",
+            "multipleOf": 0.01,
+            "maximum": 9999999999999.99,
+            "minimum": -9999999999999.99,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "example": 0
+          },
+          "DimensionHeight": {
+            "title": "Height",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "example": 0
+          },
+          "DimensionWidth": {
+            "title": "Width",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "example": 0
+          },
+          "DimensionDepth": {
+            "title": "Depth",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "example": 0
+          },
+          "DimensionUnit": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "ImageUrl": {
+            "title": "Image",
+            "maxLength": 255,
+            "type": "string"
+          },
+          "QuantityUnit": {
+            "title": "Base Unit",
+            "maxLength": 3,
+            "type": "string"
+          },
+          "MeasureUnit": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "AverageRating": {
+            "title": "Average Rating",
+            "multipleOf": 0.01,
+            "maximum": 99.99,
+            "minimum": -99.99,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "example": 0
+          },
+          "RatingCount": {
+            "title": "Number of Reviews",
+            "type": "integer",
+            "format": "int32"
+          },
+          "WeightMeasure": {
+            "title": "Weight",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "example": 0
+          },
+          "WeightUnit": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "Supplier": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/my.a4h.epm.Suppliers"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.Products-create": {
+        "title": "Products (for create)",
+        "type": "object",
+        "properties": {
+          "Supplier": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/my.a4h.epm.Suppliers-create"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.Products-update": {
+        "title": "Products (for update)",
+        "type": "object"
+      },
+      "my.a4h.epm.ProductDrafts": {
+        "title": "ProductDrafts",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "Product",
+            "maxLength": 10,
+            "type": "string"
+          },
+          "LastModified": {
+            "title": "Last Changed",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2017-04-13T15:51:04.0000000+00:00"
+          },
+          "IsNewProduct": {
+            "title": "TRUE",
+            "type": "boolean",
+            "nullable": true
+          },
+          "IsDirty": {
+            "title": "TRUE",
+            "type": "boolean",
+            "nullable": true
+          },
+          "ProductId": {
+            "title": "Product",
+            "maxLength": 10,
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "Name",
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "Description",
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "DimensionUnit": {
+            "title": "Dimension Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "DimensionHeight": {
+            "title": "Height",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "DimensionWidth": {
+            "title": "Width",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "DimensionDepth": {
+            "title": "Depth",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "WeightUnit": {
+            "title": "Weight Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "WeightMeasure": {
+            "title": "Weight",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "Price": {
+            "title": "Price",
+            "multipleOf": 0.01,
+            "maximum": 9999999999999.99,
+            "minimum": -9999999999999.99,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "CurrencyCode": {
+            "title": "Currency",
+            "maxLength": 5,
+            "type": "string",
+            "nullable": true
+          },
+          "QuantityUnit": {
+            "title": "Base Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "ImageUrl": {
+            "title": "Image",
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "SupplierId": {
+            "title": "Supplier",
+            "maxLength": 10,
+            "type": "string",
+            "nullable": true
+          },
+          "SupplierName": {
+            "title": "Supplier Name",
+            "maxLength": 80,
+            "type": "string",
+            "nullable": true
+          },
+          "SubCategoryId": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string",
+            "nullable": true
+          },
+          "SubCategoryName": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "MainCategoryId": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string",
+            "nullable": true
+          },
+          "MainCategoryName": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "CreatedAt": {
+            "title": "Time Stamp",
+            "type": "string",
+            "description": "The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).\n\nIn order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.\nEven if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.\nThe internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.\nSee also GET TIME STAMP\nA UTC time stamp in short form is also available.",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000+00:00"
+          },
+          "CreatedBy": {
+            "title": "Chgd by",
+            "maxLength": 12,
+            "type": "string",
+            "description": "Name of the user who logged on."
+          },
+          "ExpiresAt": {
+            "title": "Time Stamp",
+            "type": "string",
+            "description": "The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).\n\nIn order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.\nEven if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.\nThe internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.\nSee also GET TIME STAMP\nA UTC time stamp in short form is also available.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2017-04-13T15:51:04.0000000+00:00"
+          },
+          "Images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts"
+            }
+          },
+          "SubCategory": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/my.a4h.epm.SubCategories"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.ProductDrafts-create": {
+        "title": "ProductDrafts (for create)",
+        "type": "object",
+        "properties": {
+          "ProductId": {
+            "title": "Product",
+            "maxLength": 10,
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "Name",
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "Description",
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "DimensionUnit": {
+            "title": "Dimension Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "DimensionHeight": {
+            "title": "Height",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "DimensionWidth": {
+            "title": "Width",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "DimensionDepth": {
+            "title": "Depth",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "WeightUnit": {
+            "title": "Weight Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "WeightMeasure": {
+            "title": "Weight",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "Price": {
+            "title": "Price",
+            "multipleOf": 0.01,
+            "maximum": 9999999999999.99,
+            "minimum": -9999999999999.99,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "CurrencyCode": {
+            "title": "Currency",
+            "maxLength": 5,
+            "type": "string",
+            "nullable": true
+          },
+          "QuantityUnit": {
+            "title": "Base Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "SupplierId": {
+            "title": "Supplier",
+            "maxLength": 10,
+            "type": "string",
+            "nullable": true
+          },
+          "SubCategoryId": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string",
+            "nullable": true
+          },
+          "MainCategoryId": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string",
+            "nullable": true
+          },
+          "Images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/my.a4h.epm.ImageDrafts-create"
+            }
+          },
+          "SubCategory": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/my.a4h.epm.SubCategories-create"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.ProductDrafts-update": {
+        "title": "ProductDrafts (for update)",
+        "type": "object",
+        "properties": {
+          "ProductId": {
+            "title": "Product",
+            "maxLength": 10,
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "Name",
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "Description",
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "DimensionUnit": {
+            "title": "Dimension Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "DimensionHeight": {
+            "title": "Height",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "DimensionWidth": {
+            "title": "Width",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "DimensionDepth": {
+            "title": "Depth",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "WeightUnit": {
+            "title": "Weight Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "WeightMeasure": {
+            "title": "Weight",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "Price": {
+            "title": "Price",
+            "multipleOf": 0.01,
+            "maximum": 9999999999999.99,
+            "minimum": -9999999999999.99,
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "CurrencyCode": {
+            "title": "Currency",
+            "maxLength": 5,
+            "type": "string",
+            "nullable": true
+          },
+          "QuantityUnit": {
+            "title": "Base Unit",
+            "maxLength": 3,
+            "type": "string",
+            "nullable": true
+          },
+          "SupplierId": {
+            "title": "Supplier",
+            "maxLength": 10,
+            "type": "string",
+            "nullable": true
+          },
+          "SubCategoryId": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string",
+            "nullable": true
+          },
+          "MainCategoryId": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.ImageDrafts": {
+        "title": "ImageDrafts",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "Node Key",
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "CreatedBy": {
+            "title": "Created by",
+            "maxLength": 81,
+            "type": "string"
+          },
+          "FileName": {
+            "title": "Image File Name",
+            "maxLength": 255,
+            "type": "string"
+          },
+          "IsDeletable": {
+            "title": "Is deletable",
+            "type": "boolean"
+          },
+          "IsModifiable": {
+            "title": "Is modifiable",
+            "type": "boolean"
+          },
+          "LastModified": {
+            "title": "Time Stamp",
+            "type": "string",
+            "description": "The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).\n\nIn order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.\nEven if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.\nThe internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.\nSee also GET TIME STAMP\nA UTC time stamp in short form is also available.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2017-04-13T15:51:04.0000000+00:00"
+          },
+          "ProductId": {
+            "title": "Product ID",
+            "maxLength": 10,
+            "type": "string"
+          },
+          "MimeType": {
+            "title": "Mime Type",
+            "maxLength": 100,
+            "type": "string"
+          },
+          "CreatedAt": {
+            "title": "Time Stamp",
+            "type": "string",
+            "description": "The UTC timestamp displays date and time according to UTC (Universal Coordinated Time).\n\nIn order to convert local time into a UTC time stamp, which makes it easier to compare times, the local time must be converted according to your time zone. The ABAP command convert is available for this purpose.\nEven if the time zone that the conversion is based on can be redetermined from Customizing or master data, we still recommend that you save the time zone.\nThe internal structure of the high-resolution UTC time stamp is logically organized in date and time sections in a packed decimal format (YYYYMMDDhhmmssmmmuuun), which depicts the year, month, day, hour,second, millisecond, microsecond and the first decimal of the nanoseconds. Please note that the hardware that is normally used does not fully support a resolution of 100 nanoseconds, which is available in the structure.\nSee also GET TIME STAMP\nA UTC time stamp in short form is also available.",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000+00:00"
+          },
+          "blob": {
+            "type": "string",
+            "format": "base64url",
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.ImageDrafts-create": {
+        "title": "ImageDrafts (for create)",
+        "type": "object",
+        "properties": {
+          "FileName": {
+            "title": "Image File Name",
+            "maxLength": 255,
+            "type": "string"
+          },
+          "MimeType": {
+            "title": "Mime Type",
+            "maxLength": 100,
+            "type": "string"
+          },
+          "blob": {
+            "type": "string",
+            "format": "base64url",
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.ImageDrafts-update": {
+        "title": "ImageDrafts (for update)",
+        "type": "object",
+        "properties": {
+          "FileName": {
+            "title": "Image File Name",
+            "maxLength": 255,
+            "type": "string"
+          },
+          "blob": {
+            "type": "string",
+            "format": "base64url",
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.MainCategories": {
+        "title": "MainCategories",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "Main Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "Name": {
+            "title": "Main Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "SubCategories": {
+            "title": "Sub-Categories",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/my.a4h.epm.SubCategories"
+            }
+          }
+        }
+      },
+      "my.a4h.epm.MainCategories-create": {
+        "title": "MainCategories (for create)",
+        "type": "object",
+        "properties": {
+          "SubCategories": {
+            "title": "Sub-Categories",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/my.a4h.epm.SubCategories-create"
+            }
+          }
+        }
+      },
+      "my.a4h.epm.MainCategories-update": {
+        "title": "MainCategories (for update)",
+        "type": "object"
+      },
+      "my.a4h.epm.SubCategories": {
+        "title": "SubCategories",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "Name": {
+            "title": "Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "MainCategoryId": {
+            "title": "Main Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "MainCategoryName": {
+            "title": "Main Category",
+            "maxLength": 40,
+            "type": "string"
+          },
+          "MainCategory": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/my.a4h.epm.MainCategories"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.SubCategories-create": {
+        "title": "SubCategories (for create)",
+        "type": "object",
+        "properties": {
+          "MainCategory": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/my.a4h.epm.MainCategories-create"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "my.a4h.epm.SubCategories-update": {
+        "title": "SubCategories (for update)",
+        "type": "object"
+      },
+      "my.a4h.epm.Currencies": {
+        "title": "Currencies",
+        "type": "object",
+        "properties": {
+          "Code": {
+            "title": "ISO Code",
+            "maxLength": 3,
+            "type": "string",
+            "description": "International standardized currency key\n\nEnter the ISO code\nif you do not already use the global standard currency key as the currency key\nif you use the EDI application. Here the ISO code is used for exchanging information."
+          },
+          "Text": {
+            "maxLength": 40,
+            "type": "string"
+          }
+        }
+      },
+      "my.a4h.epm.Currencies-create": {
+        "title": "Currencies (for create)",
+        "type": "object"
+      },
+      "my.a4h.epm.Currencies-update": {
+        "title": "Currencies (for update)",
+        "type": "object"
+      },
+      "my.a4h.epm.DimensionUnits": {
+        "title": "DimensionUnits",
+        "type": "object",
+        "properties": {
+          "Unit": {
+            "title": "ISO code",
+            "maxLength": 3,
+            "type": "string",
+            "description": "ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.\n\nThe ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.\nA list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):\nUN Economic Commission for Europe\nInformation Office\nPalais des Nations\n1211 Geneva\nSwitzerland\ne-mail: info.ece@unece.org\nor viewed directly on the Internet:\n http://www.unece.org/cefact/codesfortrade/codes_index.htm\nFor more information, see SAP Note 69063."
+          },
+          "Shorttext": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "Text": {
+            "maxLength": 30,
+            "type": "string"
+          }
+        }
+      },
+      "my.a4h.epm.DimensionUnits-create": {
+        "title": "DimensionUnits (for create)",
+        "type": "object"
+      },
+      "my.a4h.epm.DimensionUnits-update": {
+        "title": "DimensionUnits (for update)",
+        "type": "object"
+      },
+      "my.a4h.epm.QuantityUnits": {
+        "title": "QuantityUnits",
+        "type": "object",
+        "properties": {
+          "Unit": {
+            "title": "ISO code",
+            "maxLength": 3,
+            "type": "string",
+            "description": "ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.\n\nThe ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.\nA list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):\nUN Economic Commission for Europe\nInformation Office\nPalais des Nations\n1211 Geneva\nSwitzerland\ne-mail: info.ece@unece.org\nor viewed directly on the Internet:\n http://www.unece.org/cefact/codesfortrade/codes_index.htm\nFor more information, see SAP Note 69063."
+          },
+          "Shorttext": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "Text": {
+            "maxLength": 30,
+            "type": "string"
+          }
+        }
+      },
+      "my.a4h.epm.QuantityUnits-create": {
+        "title": "QuantityUnits (for create)",
+        "type": "object"
+      },
+      "my.a4h.epm.QuantityUnits-update": {
+        "title": "QuantityUnits (for update)",
+        "type": "object"
+      },
+      "my.a4h.epm.WeightUnits": {
+        "title": "WeightUnits",
+        "type": "object",
+        "properties": {
+          "Unit": {
+            "title": "ISO code",
+            "maxLength": 3,
+            "type": "string",
+            "description": "ISO code for measurement units. An ISO code can be assigned to several internal measurement units of a dimension.\n\nThe ISO code is important for EDI. It is used to convert the internal SAP measurement units into standard measurement units. Data exchange via EDI requires internal measurement units to be converted into standard measurement units.\nA list of the current internationally agreed ISO codes can be ordered from the UN commission responsible (WP.4 Trade Facilitation Recommendations, Recommendation 20):\nUN Economic Commission for Europe\nInformation Office\nPalais des Nations\n1211 Geneva\nSwitzerland\ne-mail: info.ece@unece.org\nor viewed directly on the Internet:\n http://www.unece.org/cefact/codesfortrade/codes_index.htm\nFor more information, see SAP Note 69063."
+          },
+          "Shorttext": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "Text": {
+            "maxLength": 30,
+            "type": "string"
+          }
+        }
+      },
+      "my.a4h.epm.WeightUnits-create": {
+        "title": "WeightUnits (for create)",
+        "type": "object"
+      },
+      "my.a4h.epm.WeightUnits-update": {
+        "title": "WeightUnits (for update)",
+        "type": "object"
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Suppliers"
+    },
+    {
+      "name": "Products"
+    },
+    {
+      "name": "ProductDrafts"
+    },
+    {
+      "name": "ImageDrafts"
+    },
+    {
+      "name": "MainCategories"
+    },
+    {
+      "name": "SubCategories"
+    },
+    {
+      "name": "Currencies"
+    },
+    {
+      "name": "DimensionUnits"
+    },
+    {
+      "name": "QuantityUnits"
+    },
+    {
+      "name": "WeightUnits"
+    }
+  ]
+}
