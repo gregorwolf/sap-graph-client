@@ -10,6 +10,14 @@
         {
           "destinationName": "S4HANA-Cloud",
           "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
         }
       ]
     }
