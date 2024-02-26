@@ -35,54 +35,11 @@
         <Annotation Term="Common.Label" String="Graph service for my.a4h.user" />
       </Annotations>
       <Annotations Target="my.a4h.user.EntityContainer/UserDetailsSet">
-        <Annotation Term="Capabilities.InsertRestrictions">
-          <Record Type="Capabilities.InsertRestrictionsType">
-            <PropertyValue Property="Insertable" Bool="false" />
-          </Record>
-        </Annotation>
-        <Annotation Term="Capabilities.UpdateRestrictions">
-          <Record Type="Capabilities.UpdateRestrictionsType">
-            <PropertyValue Property="Updatable" Bool="false" />
-          </Record>
-        </Annotation>
-        <Annotation Term="Capabilities.DeleteRestrictions">
-          <Record Type="Capabilities.DeleteRestrictionsType">
-            <PropertyValue Property="Deletable" Bool="false" />
-          </Record>
-        </Annotation>
         <Annotation Term="Capabilities.TopSupported" Bool="false" />
         <Annotation Term="Capabilities.SkipSupported" Bool="false" />
         <Annotation Term="Capabilities.SortRestrictions">
-          <Record Type="Capabilities.SortRestrictionsType">
-            <PropertyValue Property="NonSortableProperties">
-              <Collection>
-                <PropertyPath>UserName</PropertyPath>
-                <PropertyPath>Sysid</PropertyPath>
-                <PropertyPath>Mandt</PropertyPath>
-                <PropertyPath>Logsys</PropertyPath>
-                <PropertyPath>Sylangu</PropertyPath>
-                <PropertyPath>Language</PropertyPath>
-                <PropertyPath>FullUserName</PropertyPath>
-                <PropertyPath>Aliasname</PropertyPath>
-              </Collection>
-            </PropertyValue>
-          </Record>
         </Annotation>
         <Annotation Term="Capabilities.FilterRestrictions">
-          <Record Type="Capabilities.FilterRestrictionsType">
-            <PropertyValue Property="NonFilterableProperties">
-              <Collection>
-                <PropertyPath>UserName</PropertyPath>
-                <PropertyPath>Sysid</PropertyPath>
-                <PropertyPath>Mandt</PropertyPath>
-                <PropertyPath>Logsys</PropertyPath>
-                <PropertyPath>Sylangu</PropertyPath>
-                <PropertyPath>Language</PropertyPath>
-                <PropertyPath>FullUserName</PropertyPath>
-                <PropertyPath>Aliasname</PropertyPath>
-              </Collection>
-            </PropertyValue>
-          </Record>
         </Annotation>
       </Annotations>
       <Annotations Target="my.a4h.user.UserDetailsSet/UserName">
