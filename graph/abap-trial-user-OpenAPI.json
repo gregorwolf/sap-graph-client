@@ -1,0 +1,475 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Service for namespace my.a4h.user",
+    "description": "This service is located at [https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.user//](https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.user/)",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.user/"
+    }
+  ],
+  "paths": {
+    "/UserDetailsSet": {
+      "get": {
+        "tags": ["UserDetailsSet"],
+        "summary": "Get entities from UserDetailsSet",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "Sysid",
+                  "Sysid desc",
+                  "Mandt",
+                  "Mandt desc",
+                  "Logsys",
+                  "Logsys desc",
+                  "Sylangu",
+                  "Sylangu desc",
+                  "Language",
+                  "Language desc",
+                  "FullUserName",
+                  "FullUserName desc",
+                  "Aliasname",
+                  "Aliasname desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "Sysid",
+                  "Mandt",
+                  "Logsys",
+                  "Sylangu",
+                  "Language",
+                  "FullUserName",
+                  "Aliasname"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of UserDetailsSet",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["UserDetailsSet"],
+        "summary": "Add new entity to UserDetailsSet",
+        "requestBody": {
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet-create"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/UserDetailsSet('{UserName}')": {
+      "get": {
+        "tags": ["UserDetailsSet"],
+        "summary": "Get entity from UserDetailsSet by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "Sysid",
+                  "Mandt",
+                  "Logsys",
+                  "Sylangu",
+                  "Language",
+                  "FullUserName",
+                  "Aliasname"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["UserDetailsSet"],
+        "summary": "Update entity in UserDetailsSet",
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet-update"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["UserDetailsSet"],
+        "summary": "Delete entity from UserDetailsSet",
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "UserName",
+          "in": "path",
+          "description": "ABAP system field. Logon name of the user.",
+          "required": true,
+          "schema": {
+            "maxLength": 12,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/$batch": {
+      "post": {
+        "tags": ["Batch Requests"],
+        "summary": "Send a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "requestBody": {
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET UserDetailsSet HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "required": ["error"],
+        "type": "object",
+        "properties": {
+          "error": {
+            "required": ["code", "message"],
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "required": ["code", "message"],
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      },
+      "my.a4h.user.UserDetailsSet": {
+        "title": "UserDetailsSet",
+        "type": "object",
+        "properties": {
+          "UserName": {
+            "title": "User Name",
+            "maxLength": 12,
+            "type": "string",
+            "description": "ABAP system field. Logon name of the user."
+          },
+          "Sysid": {
+            "title": "SAP System ID",
+            "maxLength": 8,
+            "type": "string",
+            "description": "ABAP system field. AS ABAP name, for example &quot;S01&quot; or &quot;K99&quot;."
+          },
+          "Mandt": {
+            "title": "Client ID",
+            "maxLength": 3,
+            "type": "string",
+            "description": "ABAP system field. Client ID used by the current user to log on, for example '401', or '800'."
+          },
+          "Logsys": {
+            "title": "Logical system",
+            "maxLength": 10,
+            "type": "string",
+            "description": "System in which applications run integrated on a shared data basis.\n\nThe distribution of data between systems requires that each system in the network has a unique identification. The logical system is used for this purpose.\nIn the SAP System the client corresponds to a logical system. You can assign a logical system to a client in the client maintenance (choose Goto -> Detail).\nThe logical system is relevant in the following SAP areas:\nALE general: two or more logical systems communicate with one another.\nALE - ALE business processes (for example, cost center accounting): definition of a system where a specific application runs. Changes to master data can only be made in this system, for example.\nWorkflow objects: the logical system in which the object is located is always included in an object's key.\nWhen maintaining the logical system, note the following:\nThe logical system must be unique company-wide. It must not be used by any other system in the ALE integrated group. In a production system, the logical system must not be changed. If the logical system of a document reference is not set to initial and does not match your own, the system assumes the document is located in a different system."
+          },
+          "Sylangu": {
+            "title": "Language Key",
+            "maxLength": 2,
+            "type": "string",
+            "description": "ABAP system field. One-character language key for the current text environment, for example 'E', 'D', or 'F'. Set by the logon language of the user or by the statement SET LOCALE."
+          },
+          "Language": {
+            "title": "Lang. (ISO)",
+            "maxLength": 2,
+            "type": "string"
+          },
+          "FullUserName": {
+            "title": "Full Name",
+            "maxLength": 80,
+            "type": "string",
+            "description": "This field contains the complete personal name. It is usually generated from the various name components (without title).\n\nThere are two exceptions:\nThe field contents were assembled by converting data from a previous release from the previous title and name fields because the title could not be assigned automatically to a title key . In this case the field CONVERTED (&quot;Status of the field NAME_TEXT&quot;) has the value 'X'.\nThe field contents were maintained manually using a supplementary function in dialog, e.g. because the complete name cannot be split into the specified name parts. In this case the field CONVERTED (&quot;Status of the field NAME_TEXT&quot;) has the value 'M'.\nThe field CONVERTED (&quot;Status of the field NAME_TEXT&quot;) has the value SPACE if neither of the exceptions applies."
+          },
+          "Aliasname": {
+            "title": "Alias",
+            "maxLength": 40,
+            "type": "string",
+            "description": "The alias is an alternative name for an SAP user."
+          }
+        }
+      },
+      "my.a4h.user.UserDetailsSet-create": {
+        "title": "UserDetailsSet (for create)",
+        "type": "object"
+      },
+      "my.a4h.user.UserDetailsSet-update": {
+        "title": "UserDetailsSet (for update)",
+        "type": "object"
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "AADToken": {
+        "type": "oauth2",
+        "description": "OAuth Client Login (With Azure Active Directory)",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://login.microsoftonline.com//oauth2/v2.0/authorize",
+            "scopes": {
+              "userid": "Retrieve User Information",
+              "profile": "Access the users profile",
+              "user_impersonation": "Access the signed in system as the user"
+            }
+          },
+          "clientCredentials": {
+            "tokenUrl": "https://login.microsoftonline.com//oauth2/v2.0/token",
+            "scopes": {
+              "userid": "Retrieve User Information",
+              "profile": "Access the users profile",
+              "user_impersonation": "Access the signed in system as the user"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "AADToken": ["userid", "profile", "user_impersonation"]
+    }
+  ],
+  "tags": [
+    {
+      "name": "UserDetailsSet"
+    }
+  ]
+}
