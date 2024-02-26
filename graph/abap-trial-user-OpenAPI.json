@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Service for namespace my.a4h.user",
-    "description": "This service is located at [https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.user//](https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.user/)",
+    "description": "This service is located at [https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.user//](https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.user//)",
     "version": "1"
   },
   "servers": [
@@ -29,36 +29,6 @@
           },
           {
             "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "Sysid",
-                  "Sysid desc",
-                  "Mandt",
-                  "Mandt desc",
-                  "Logsys",
-                  "Logsys desc",
-                  "Sylangu",
-                  "Sylangu desc",
-                  "Language",
-                  "Language desc",
-                  "FullUserName",
-                  "FullUserName desc",
-                  "Aliasname",
-                  "Aliasname desc"
-                ],
-                "type": "string"
-              }
-            }
           },
           {
             "name": "$select",
@@ -102,36 +72,6 @@
                       }
                     }
                   }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "post": {
-        "tags": ["UserDetailsSet"],
-        "summary": "Add new entity to UserDetailsSet",
-        "requestBody": {
-          "description": "New entity",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet-create"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet"
                 }
               }
             }
@@ -186,41 +126,6 @@
           }
         }
       },
-      "patch": {
-        "tags": ["UserDetailsSet"],
-        "summary": "Update entity in UserDetailsSet",
-        "requestBody": {
-          "description": "New property values",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/my.a4h.user.UserDetailsSet-update"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "delete": {
-        "tags": ["UserDetailsSet"],
-        "summary": "Delete entity from UserDetailsSet",
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
       "parameters": [
         {
           "name": "UserName",
@@ -268,6 +173,37 @@
           }
         }
       }
+    },
+    "/": {
+      "head": {
+        "summary": "The root of the API, needed for any csrf processing",
+        "operationId": "root/head",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "summary": "The root of the API",
+        "operationId": "root/get",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/$metadata": {
+      "get": {
+        "summary": "$Metadata endpoint",
+        "operationId": "$metadata/get",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "components": {
@@ -281,6 +217,18 @@
             "type": "string"
           }
         ],
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        },
         "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
       },
       "error": {
@@ -321,6 +269,16 @@
               "innererror": {
                 "type": "object",
                 "description": "The structure of this object is service-specific"
+              }
+            }
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
               }
             }
           }
@@ -376,16 +334,50 @@
             "maxLength": 40,
             "type": "string",
             "description": "The alias is an alternative name for an SAP user."
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.user.UserDetailsSet-create": {
         "title": "UserDetailsSet (for create)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.user.UserDetailsSet-update": {
         "title": "UserDetailsSet (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       }
     },
     "responses": {
@@ -443,7 +435,7 @@
         "description": "OAuth Client Login (With Azure Active Directory)",
         "flows": {
           "implicit": {
-            "authorizationUrl": "https://login.microsoftonline.com//oauth2/v2.0/authorize",
+            "authorizationUrl": "https://login.microsoftonline.com/6f8c8b13-6c5b-42e2-8a42-e4ef99e7ff48/oauth2/v2.0/authorize",
             "scopes": {
               "userid": "Retrieve User Information",
               "profile": "Access the users profile",
@@ -451,7 +443,7 @@
             }
           },
           "clientCredentials": {
-            "tokenUrl": "https://login.microsoftonline.com//oauth2/v2.0/token",
+            "tokenUrl": "https://login.microsoftonline.com/6f8c8b13-6c5b-42e2-8a42-e4ef99e7ff48/oauth2/v2.0/token",
             "scopes": {
               "userid": "Retrieve User Information",
               "profile": "Access the users profile",
@@ -469,7 +461,8 @@
   ],
   "tags": [
     {
-      "name": "UserDetailsSet"
+      "name": "UserDetailsSet",
+      "description": "UserDetailsSet"
     }
   ]
 }

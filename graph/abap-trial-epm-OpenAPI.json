@@ -2,12 +2,12 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Service for namespace my.a4h.epm",
-    "description": "This service is located at [https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/a4h/my.a4h.epm//](https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/a4h/my.a4h.epm//)\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Suppliers{bg:dodgerblue}]++-*>[Suppliers],[Products{bg:dodgerblue}]++-*>[Products],[ProductDrafts{bg:dodgerblue}]++-*>[ProductDrafts],[ImageDrafts{bg:dodgerblue}]++-*>[ImageDrafts],[MainCategories{bg:dodgerblue}]++-*>[MainCategories],[SubCategories{bg:dodgerblue}]++-*>[SubCategories],[Currencies{bg:dodgerblue}]++-*>[Currencies],[DimensionUnits{bg:dodgerblue}]++-*>[DimensionUnits],[QuantityUnits{bg:dodgerblue}]++-*>[QuantityUnits],[WeightUnits{bg:dodgerblue}]++-*>[WeightUnits],[Suppliers{bg:orange}],[Products{bg:orange}],[Products]-0..1>[Suppliers{bg:orange}],[ProductDrafts{bg:orange}],[ProductDrafts]-*>[ImageDrafts{bg:orange}],[ProductDrafts]-0..1>[SubCategories{bg:orange}],[ImageDrafts{bg:orange}],[MainCategories{bg:orange}],[MainCategories]-*>[SubCategories{bg:orange}],[SubCategories{bg:orange}],[SubCategories]-0..1>[MainCategories{bg:orange}],[Currencies{bg:orange}],[DimensionUnits{bg:orange}],[QuantityUnits{bg:orange}],[WeightUnits{bg:orange}])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:orange}],[EntitySet/Singleton/Operation{bg:dodgerblue}])",
+    "description": "This service is located at [https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.epm//](https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.epm//)",
     "version": "1"
   },
   "servers": [
     {
-      "url": "https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/a4h/my.a4h.epm/"
+      "url": "https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/a4h/my.a4h.epm/"
     }
   ],
   "paths": {
@@ -854,6 +854,18 @@
       "patch": {
         "tags": ["ProductDrafts"],
         "summary": "Update entity in ProductDrafts",
+        "parameters": [
+          {
+            "name": "if-match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-visibility": "required",
+            "x-ms-summary": "Place the eTag value for optimistic concurrency control in this header"
+          }
+        ],
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -877,6 +889,18 @@
       "delete": {
         "tags": ["ProductDrafts"],
         "summary": "Delete entity from ProductDrafts",
+        "parameters": [
+          {
+            "name": "if-match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-visibility": "required",
+            "x-ms-summary": "Place the eTag value for optimistic concurrency control in this header"
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -1345,6 +1369,18 @@
       "patch": {
         "tags": ["ImageDrafts"],
         "summary": "Update entity in ImageDrafts",
+        "parameters": [
+          {
+            "name": "if-match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-visibility": "required",
+            "x-ms-summary": "Place the eTag value for optimistic concurrency control in this header"
+          }
+        ],
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -1368,6 +1404,18 @@
       "delete": {
         "tags": ["ImageDrafts"],
         "summary": "Delete entity from ImageDrafts",
+        "parameters": [
+          {
+            "name": "if-match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-visibility": "required",
+            "x-ms-summary": "Place the eTag value for optimistic concurrency control in this header"
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -2501,6 +2549,18 @@
             "type": "string"
           }
         ],
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        },
         "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
       },
       "error": {
@@ -2541,6 +2601,16 @@
               "innererror": {
                 "type": "object",
                 "description": "The structure of this object is service-specific"
+              }
+            }
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
               }
             }
           }
@@ -2597,16 +2667,50 @@
             "title": "Contact Person Mail",
             "maxLength": 255,
             "type": "string"
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.Suppliers-create": {
         "title": "Suppliers (for create)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.Suppliers-update": {
         "title": "Suppliers (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.Products": {
         "title": "Products",
@@ -2803,6 +2907,16 @@
               }
             ],
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -2817,12 +2931,34 @@
               }
             ],
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.Products-update": {
         "title": "Products (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.ProductDrafts": {
         "title": "ProductDrafts",
@@ -3051,6 +3187,16 @@
               }
             ],
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3216,6 +3362,16 @@
               }
             ],
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3367,6 +3523,16 @@
             "maxLength": 40,
             "type": "string",
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3427,6 +3593,16 @@
             "type": "string",
             "format": "base64url",
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3448,6 +3624,16 @@
             "type": "string",
             "format": "base64url",
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3464,6 +3650,16 @@
             "type": "string",
             "format": "base64url",
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3487,6 +3683,16 @@
             "items": {
               "$ref": "#/components/schemas/my.a4h.epm.SubCategories"
             }
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3500,12 +3706,34 @@
             "items": {
               "$ref": "#/components/schemas/my.a4h.epm.SubCategories-create"
             }
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.MainCategories-update": {
         "title": "MainCategories (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.SubCategories": {
         "title": "SubCategories",
@@ -3538,6 +3766,16 @@
               }
             ],
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
@@ -3552,12 +3790,34 @@
               }
             ],
             "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.SubCategories-update": {
         "title": "SubCategories (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.Currencies": {
         "title": "Currencies",
@@ -3572,16 +3832,50 @@
           "Text": {
             "maxLength": 40,
             "type": "string"
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.Currencies-create": {
         "title": "Currencies (for create)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.Currencies-update": {
         "title": "Currencies (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.DimensionUnits": {
         "title": "DimensionUnits",
@@ -3600,16 +3894,50 @@
           "Text": {
             "maxLength": 30,
             "type": "string"
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.DimensionUnits-create": {
         "title": "DimensionUnits (for create)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.DimensionUnits-update": {
         "title": "DimensionUnits (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.QuantityUnits": {
         "title": "QuantityUnits",
@@ -3628,16 +3956,50 @@
           "Text": {
             "maxLength": 30,
             "type": "string"
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.QuantityUnits-create": {
         "title": "QuantityUnits (for create)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.QuantityUnits-update": {
         "title": "QuantityUnits (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.WeightUnits": {
         "title": "WeightUnits",
@@ -3656,16 +4018,50 @@
           "Text": {
             "maxLength": 30,
             "type": "string"
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
       "my.a4h.epm.WeightUnits-create": {
         "title": "WeightUnits (for create)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       },
       "my.a4h.epm.WeightUnits-update": {
         "title": "WeightUnits (for update)",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
       }
     },
     "responses": {
@@ -3716,38 +4112,77 @@
           "type": "string"
         }
       }
+    },
+    "securitySchemes": {
+      "AADToken": {
+        "type": "oauth2",
+        "description": "OAuth Client Login (With Azure Active Directory)",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://login.microsoftonline.com/6f8c8b13-6c5b-42e2-8a42-e4ef99e7ff48/oauth2/v2.0/authorize",
+            "scopes": {
+              "userid": "Retrieve User Information",
+              "profile": "Access the users profile",
+              "user_impersonation": "Access the signed in system as the user"
+            }
+          },
+          "clientCredentials": {
+            "tokenUrl": "https://login.microsoftonline.com/6f8c8b13-6c5b-42e2-8a42-e4ef99e7ff48/oauth2/v2.0/token",
+            "scopes": {
+              "userid": "Retrieve User Information",
+              "profile": "Access the users profile",
+              "user_impersonation": "Access the signed in system as the user"
+            }
+          }
+        }
+      }
     }
   },
+  "security": [
+    {
+      "AADToken": ["userid", "profile", "user_impersonation"]
+    }
+  ],
   "tags": [
     {
-      "name": "Suppliers"
+      "name": "Suppliers",
+      "description": "Suppliers"
     },
     {
-      "name": "Products"
+      "name": "Products",
+      "description": "Products"
     },
     {
-      "name": "ProductDrafts"
+      "name": "ProductDrafts",
+      "description": "ProductDrafts"
     },
     {
-      "name": "ImageDrafts"
+      "name": "ImageDrafts",
+      "description": "ImageDrafts"
     },
     {
-      "name": "MainCategories"
+      "name": "MainCategories",
+      "description": "MainCategories"
     },
     {
-      "name": "SubCategories"
+      "name": "SubCategories",
+      "description": "SubCategories"
     },
     {
-      "name": "Currencies"
+      "name": "Currencies",
+      "description": "Currencies"
     },
     {
-      "name": "DimensionUnits"
+      "name": "DimensionUnits",
+      "description": "DimensionUnits"
     },
     {
-      "name": "QuantityUnits"
+      "name": "QuantityUnits",
+      "description": "QuantityUnits"
     },
     {
-      "name": "WeightUnits"
+      "name": "WeightUnits",
+      "description": "WeightUnits"
     }
   ]
 }
