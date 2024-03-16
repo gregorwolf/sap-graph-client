@@ -1,0 +1,65 @@
+{
+  "businessDataGraphIdentifier": "s4hcsosb",
+  "description": "S/4HANA Cloud Sales Order Management from api.sap.com Sandbox",
+  "graphModelVersion": "^v3",
+  "schemaVersion": "1.2.0",
+  "dataSources": [
+    {
+      "name": "s4",
+      "services": [
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_SALES_QUOTATION_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata4/sap/api_producttype/srvd_a2x/sap/producttype/0001"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_SALESORGANIZATION_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_PRODUCTGROUP_SRV"
+        }
+      ]
+    }
+  ],
+  "locatingPolicy": {
+    "cues": [],
+    "rules": [
+      {
+        "name": "sap.s4.*",
+        "leading": "s4",
+        "local": []
+      },
+      {
+        "name": "sap.graph.*",
+        "leading": "s4",
+        "local": []
+      }
+    ]
+  },
+  "effectiveGraphModelVersion": "3.1.0"
+}
