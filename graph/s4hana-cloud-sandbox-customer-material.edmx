@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Graph.xml">
+    <edmx:Include Alias="Graph" Namespace="com.sap.vocabularies.Graph.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="sap.s4" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="A_CustomerMaterial" EntityType="sap.s4.A_CustomerMaterial"/>
+      </EntityContainer>
+      <EntityType Name="A_CustomerMaterial">
+        <Key>
+          <PropertyRef Name="SalesOrganization"/>
+          <PropertyRef Name="DistributionChannel"/>
+          <PropertyRef Name="Customer"/>
+          <PropertyRef Name="Material"/>
+        </Key>
+        <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+        <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="Material" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="MaterialByCustomer" Type="Edm.String" MaxLength="35"/>
+        <Property Name="MaterialDescriptionByCustomer" Type="Edm.String" MaxLength="40"/>
+        <Property Name="Plant" Type="Edm.String" MaxLength="4"/>
+        <Property Name="DeliveryPriority" Type="Edm.String" MaxLength="2"/>
+        <Property Name="MinDeliveryQtyInBaseUnit" Type="Edm.Decimal" Scale="3" Precision="13"/>
+        <Property Name="BaseUnit" Type="Edm.String" MaxLength="3"/>
+        <Property Name="PartialDeliveryIsAllowed" Type="Edm.String" MaxLength="1"/>
+        <Property Name="MaxNmbrOfPartialDelivery" Type="Edm.Decimal" Scale="0" Precision="1"/>
+        <Property Name="UnderdelivTolrtdLmtRatioInPct" Type="Edm.Decimal" Scale="1" Precision="3"/>
+        <Property Name="OverdelivTolrtdLmtRatioInPct" Type="Edm.Decimal" Scale="1" Precision="3"/>
+        <Property Name="UnlimitedOverdeliveryIsAllowed" Type="Edm.Boolean"/>
+        <Property Name="CustomerMaterialItemUsage" Type="Edm.String" MaxLength="4"/>
+        <Property Name="SalesUnit" Type="Edm.String" MaxLength="3"/>
+        <Property Name="SalesQtyToBaseQtyDnmntr" Type="Edm.Decimal" Scale="0" Precision="5"/>
+        <Property Name="SalesQtyToBaseQtyNmrtr" Type="Edm.Decimal" Scale="0" Precision="5"/>
+        <Property Name="CustomerMaterialSearchTerm" Type="Edm.String" MaxLength="10"/>
+        <Property Name="ETag" Type="Edm.String" MaxLength="27"/>
+      </EntityType>
+      <Annotation Term="Core.SchemaVersion" String="1"/>
+      <Annotations Target="sap.s4.EntityContainer">
+        <Annotation Term="Capabilities.KeyAsSegmentSupported" Bool="true"/>
+        <Annotation Term="Common.Label" String="Graph service for sap.s4"/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial">
+        <Annotation Term="Graph.CompositionRoot" Bool="true"/>
+        <Annotation Term="Common.Label" String="Customer Materials"/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/SalesOrganization">
+        <Annotation Term="Common.Label" String="Sales Organization"/>
+        <Annotation Term="Core.Description" String="An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.&#xA;&#xA;You can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/DistributionChannel">
+        <Annotation Term="Common.Label" String="Distribution Channel"/>
+        <Annotation Term="Core.Description" String="The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.&#xA;&#xA;You can maintain information about customers and materials by sales organization and distribution channel. Within a sales organization you can deliver goods to a given customer through more than one distribution channel.&#xA;You can assign a distribution channel to one or more sales organizations. If, for example, you have numerous sales organizations, each sales organization may use the &amp;quot;Wholesale&amp;quot; distribution channel.&#xA;For each combination of sales organization and distribution channel, you can further assign one or more of the divisions that are defined for the sales organization. You can, for example, assign &amp;quot;Food&amp;quot; and &amp;quot;Non-food&amp;quot; divisions to the &amp;quot;Wholesale&amp;quot; distribution channel. A particular combination of sales organization, distribution channel, and division is known as a sales area."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/Customer">
+        <Annotation Term="Common.Label" String="Customer"/>
+        <Annotation Term="Core.Description" String="The customer to whom the condition or the customer-material info record applies.&#xA;&#xA;Enter the number of your customer."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/Material">
+        <Annotation Term="Common.Label" String="Product"/>
+        <Annotation Term="Core.Description" String="Alphanumeric key uniquely identifying the product."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/MaterialByCustomer">
+        <Annotation Term="Common.Label" String="Customer Material"/>
+        <Annotation Term="Core.Description" String="Uniquely identifies the material from the customer's point of view.&#xA;&#xA;If the customer uses a different identifier than the one you use for the material, you can include this information in a customer-material info record. You can also include in this record specific shipping details, such as&#xA;Minimum delivery quantity&#xA;Partial delivery conditions&#xA;Enter a value from an existing customer-material info record."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/MaterialDescriptionByCustomer">
+        <Annotation Term="Common.Label" String="Customer Description"/>
+        <Annotation Term="Core.Description" String="The short text that the customer uses to describe the material.&#xA;&#xA;If you include the customer's description as short text in the customer-material info record, the system automatically uses the text during sales document processing. When you create a sales order, for example, the customer's description appears instead of the short text from the material master record."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/Plant">
+        <Annotation Term="Common.Label" String="Plant"/>
+        <Annotation Term="Core.Description" String="Key that uniquely identifies a plant."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/DeliveryPriority">
+        <Annotation Term="Common.Label" String="Delivery Priority"/>
+        <Annotation Term="Core.Description" String="The delivery priority assigned to an item.&#xA;&#xA;You can assign delivery priority to either a particular material or to a combination of customer and material. When you process deliveries collectively, you can use delivery priority as one of the selection criteria."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/MinDeliveryQtyInBaseUnit">
+        <Annotation Term="Common.Label" String="Minimum Delivery Qty"/>
+        <Annotation Term="Core.Description" String="Minimum quantity that may be delivered to a customer."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/BaseUnit">
+        <Annotation Term="Common.Label" String="Base Unit of Measure"/>
+        <Annotation Term="Core.Description" String="Unit of measure in which stocks of the material are managed. The system converts all the quantities you enter in other units of measure (alternative units of measure) to the base unit of measure.&#xA;&#xA;You define the base unit of measure and also alternative units of measure and their conversion factors in the material master record.&#xA;Since all data is updated in the base unit of measure, your entry is particularly important for the conversion of alternative units of measure. A quantity in the alternative unit of measure can only be shown precisely if its value can be shown with the decimal places available. To ensure this, please note the following:&#xA;The base unit of measure is the unit satisfying the highest necessary requirement for precision.&#xA;The conversion of alternative units of measure to the base unit should result in simple decimal fractions (not, for example, 1/3 = 0.333...).&#xA;Inventory Management&#xA;In Inventory Management, the base unit of measure is the same as the stockkeeping unit.&#xA;Services&#xA;Services have units of measure of their own, including the following:&#xA;Service unit&#xA;Unit of measure at the higher item level. The precise quantities of the individual services are each at the detailed service line level.&#xA;Blanket&#xA;Unit of measure at service line level for services to be provided once only, and for which no precise quantities can or are to be specified."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/PartialDeliveryIsAllowed">
+        <Annotation Term="Common.Label" String="Partial Deliv./Item"/>
+        <Annotation Term="Core.Description" String="Specifies whether the customer requires full or partial delivery for the item.&#xA;&#xA;You use this field to control partial deliveries at the item level. If the customer allows partial delivery, you can choose from different partial delivery options. For example, you can specify whether the customer allows you to make one delivery attempt only on the requested delivery date or whether unlimited delivery attempts are possible.&#xA;When partial delivery indicator 'D' is set, the order can never have status 'fully delivered'. You must complete each item by entering a reason for rejection. This could be applied to scheduling agreements, for example.&#xA;You can enter a value in this field only if the customer allows partial deliveries for the entire sales document."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/MaxNmbrOfPartialDelivery">
+        <Annotation Term="Common.Label" String="Max.Part.Deliveries"/>
+        <Annotation Term="Core.Description" String="The maximum number of partial deliveries you can make (including the first delivery) to satisfy the order quantity for an item.&#xA;&#xA;The system can propose a number from the shipping information in the customer master record. During sales order processing, you can change the proposed value in the shipping information for each item in the sales document.&#xA;You can only specify a maximum number of partial deliveries if the Partial delivery/item field (in either the customer master record or in the sales document) indicates that partial deliveries are allowed."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/UnderdelivTolrtdLmtRatioInPct">
+        <Annotation Term="Common.Label" String="Underdel. Tolerance"/>
+        <Annotation Term="Core.Description" String="Percentage (based on the order quantity) up to which an underdelivery of this item will be accepted."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/OverdelivTolrtdLmtRatioInPct">
+        <Annotation Term="Common.Label" String="Overdeliv. Tolerance"/>
+        <Annotation Term="Core.Description" String="Percentage (based on the order quantity) up to which an overdelivery of this item will be accepted.&#xA;&#xA;If you have set the indicator in the Partial delivery/Item field to 'D' (partial delivery allowed), this takes priority. It makes no sense to define a tolerance limit for overdelivery in such case."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/UnlimitedOverdeliveryIsAllowed">
+        <Annotation Term="Common.Label" String="Unlimited Tolerance"/>
+        <Annotation Term="Core.Description" String="Indicates whether the customer allows unlimited over- and underdeliveries.&#xA;&#xA;If the customer allows unlimited over- and underdeliveries, you cannot enter values in the fields that specify over- and underdelivery tolerance."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/CustomerMaterialItemUsage">
+        <Annotation Term="Common.Label" String="Item Usage"/>
+        <Annotation Term="Core.Description" String="The item usage controls the system reaction when you process a sales document item in a certain context.&#xA;&#xA;The item usage can be used for the determination of item categories. It controls which other item categories are to be found in a certain environment (text items and packing items, for example).&#xA;It can also control which items are to be billed in a service quotation or the corresponding sales order and which are only there for statistical reasons."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/SalesUnit">
+        <Annotation Term="Common.Label" String="Sales Unit"/>
+        <Annotation Term="Core.Description" String="Unit of measure in which the material is sold."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/SalesQtyToBaseQtyDnmntr">
+        <Annotation Term="Common.Label" String="Denominator"/>
+        <Annotation Term="Core.Description" String="Denominator of the conversion factor that the system uses to convert sales units to base units of measure.&#xA;&#xA;Many material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure&#xA;You store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:&#xA; 100 bt &lt;=> 1 ca&#xA;The first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/SalesQtyToBaseQtyNmrtr">
+        <Annotation Term="Common.Label" String="Numerator"/>
+        <Annotation Term="Core.Description" String="Numerator of the conversion factor that the system uses to convert sales units to base units of measure.&#xA;&#xA;Many material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure&#xA;You store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:&#xA; 100 bt &lt;=> 1 ca&#xA;The first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/CustomerMaterialSearchTerm">
+        <Annotation Term="Common.Label" String="Search Term"/>
+        <Annotation Term="Core.Description" String="Short name which is used to set up a matchcode.&#xA;&#xA;The significant part of the name should be entered in this field.&#xA;For names like 'Mr. Eric P. Crawford', you should enter 'Crawford' in this field."/>
+      </Annotations>
+      <Annotations Target="sap.s4.A_CustomerMaterial/ETag">
+        <Annotation Term="Common.Label" String="ETag"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

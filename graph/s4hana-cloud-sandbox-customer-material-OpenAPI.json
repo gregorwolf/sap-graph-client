@@ -1,0 +1,1148 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Customer Material from S/4HANA Cloud Sandbox exposed via SAP Graph",
+    "description": "Customer Material from S/4HANA Cloud Sandbox exposed via SAP Graph",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://csw-dev-c7fb29969bc142af82dc5ff4a2c3d596.a.integration.cloud.sap/graph/api/s4hccustmat/sap.s4"
+    }
+  ],
+  "paths": {
+    "/A_CustomerMaterial": {
+      "get": {
+        "tags": ["Customer Materials"],
+        "summary": "Get entities from A_CustomerMaterial",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "SalesOrganization",
+                  "SalesOrganization desc",
+                  "DistributionChannel",
+                  "DistributionChannel desc",
+                  "Customer",
+                  "Customer desc",
+                  "Material",
+                  "Material desc",
+                  "MaterialByCustomer",
+                  "MaterialByCustomer desc",
+                  "MaterialDescriptionByCustomer",
+                  "MaterialDescriptionByCustomer desc",
+                  "Plant",
+                  "Plant desc",
+                  "DeliveryPriority",
+                  "DeliveryPriority desc",
+                  "MinDeliveryQtyInBaseUnit",
+                  "MinDeliveryQtyInBaseUnit desc",
+                  "BaseUnit",
+                  "BaseUnit desc",
+                  "PartialDeliveryIsAllowed",
+                  "PartialDeliveryIsAllowed desc",
+                  "MaxNmbrOfPartialDelivery",
+                  "MaxNmbrOfPartialDelivery desc",
+                  "UnderdelivTolrtdLmtRatioInPct",
+                  "UnderdelivTolrtdLmtRatioInPct desc",
+                  "OverdelivTolrtdLmtRatioInPct",
+                  "OverdelivTolrtdLmtRatioInPct desc",
+                  "UnlimitedOverdeliveryIsAllowed",
+                  "UnlimitedOverdeliveryIsAllowed desc",
+                  "CustomerMaterialItemUsage",
+                  "CustomerMaterialItemUsage desc",
+                  "SalesUnit",
+                  "SalesUnit desc",
+                  "SalesQtyToBaseQtyDnmntr",
+                  "SalesQtyToBaseQtyDnmntr desc",
+                  "SalesQtyToBaseQtyNmrtr",
+                  "SalesQtyToBaseQtyNmrtr desc",
+                  "CustomerMaterialSearchTerm",
+                  "CustomerMaterialSearchTerm desc",
+                  "ETag",
+                  "ETag desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "SalesOrganization",
+                  "DistributionChannel",
+                  "Customer",
+                  "Material",
+                  "MaterialByCustomer",
+                  "MaterialDescriptionByCustomer",
+                  "Plant",
+                  "DeliveryPriority",
+                  "MinDeliveryQtyInBaseUnit",
+                  "BaseUnit",
+                  "PartialDeliveryIsAllowed",
+                  "MaxNmbrOfPartialDelivery",
+                  "UnderdelivTolrtdLmtRatioInPct",
+                  "OverdelivTolrtdLmtRatioInPct",
+                  "UnlimitedOverdeliveryIsAllowed",
+                  "CustomerMaterialItemUsage",
+                  "SalesUnit",
+                  "SalesQtyToBaseQtyDnmntr",
+                  "SalesQtyToBaseQtyNmrtr",
+                  "CustomerMaterialSearchTerm",
+                  "ETag"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of A_CustomerMaterial",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/sap.s4.A_CustomerMaterial"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Customer Materials"],
+        "summary": "Add new entity to A_CustomerMaterial",
+        "requestBody": {
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/sap.s4.A_CustomerMaterial-create"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sap.s4.A_CustomerMaterial"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}')": {
+      "get": {
+        "tags": ["Customer Materials"],
+        "summary": "Get entity from A_CustomerMaterial by key",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "SalesOrganization",
+                  "DistributionChannel",
+                  "Customer",
+                  "Material",
+                  "MaterialByCustomer",
+                  "MaterialDescriptionByCustomer",
+                  "Plant",
+                  "DeliveryPriority",
+                  "MinDeliveryQtyInBaseUnit",
+                  "BaseUnit",
+                  "PartialDeliveryIsAllowed",
+                  "MaxNmbrOfPartialDelivery",
+                  "UnderdelivTolrtdLmtRatioInPct",
+                  "OverdelivTolrtdLmtRatioInPct",
+                  "UnlimitedOverdeliveryIsAllowed",
+                  "CustomerMaterialItemUsage",
+                  "SalesUnit",
+                  "SalesQtyToBaseQtyDnmntr",
+                  "SalesQtyToBaseQtyNmrtr",
+                  "CustomerMaterialSearchTerm",
+                  "ETag"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sap.s4.A_CustomerMaterial"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Customer Materials"],
+        "summary": "Update entity in A_CustomerMaterial",
+        "parameters": [
+          {
+            "name": "if-match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-visibility": "required",
+            "x-ms-summary": "Place the eTag value for optimistic concurrency control in this header"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/sap.s4.A_CustomerMaterial-update"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Customer Materials"],
+        "summary": "Delete entity from A_CustomerMaterial",
+        "parameters": [
+          {
+            "name": "if-match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-visibility": "required",
+            "x-ms-summary": "Place the eTag value for optimistic concurrency control in this header"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "SalesOrganization",
+          "in": "path",
+          "description": "An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.\n\nYou can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
+          "required": true,
+          "schema": {
+            "maxLength": 4,
+            "type": "string"
+          }
+        },
+        {
+          "name": "DistributionChannel",
+          "in": "path",
+          "description": "The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.\n\nYou can maintain information about customers and materials by sales organization and distribution channel. Within a sales organization you can deliver goods to a given customer through more than one distribution channel.\nYou can assign a distribution channel to one or more sales organizations. If, for example, you have numerous sales organizations, each sales organization may use the &quot;Wholesale&quot; distribution channel.\nFor each combination of sales organization and distribution channel, you can further assign one or more of the divisions that are defined for the sales organization. You can, for example, assign &quot;Food&quot; and &quot;Non-food&quot; divisions to the &quot;Wholesale&quot; distribution channel. A particular combination of sales organization, distribution channel, and division is known as a sales area.",
+          "required": true,
+          "schema": {
+            "maxLength": 2,
+            "type": "string"
+          }
+        },
+        {
+          "name": "Customer",
+          "in": "path",
+          "description": "The customer to whom the condition or the customer-material info record applies.\n\nEnter the number of your customer.",
+          "required": true,
+          "schema": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        },
+        {
+          "name": "Material",
+          "in": "path",
+          "description": "Alphanumeric key uniquely identifying the product.",
+          "required": true,
+          "schema": {
+            "maxLength": 40,
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/$batch": {
+      "post": {
+        "tags": ["Batch Requests"],
+        "summary": "Send a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "requestBody": {
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET A_CustomerMaterial HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/": {
+      "head": {
+        "summary": "The root of the API, needed for any csrf processing",
+        "operationId": "root/head",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "summary": "The root of the API",
+        "operationId": "root/get",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/$metadata": {
+      "get": {
+        "summary": "$Metadata endpoint",
+        "operationId": "$metadata/get",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "properties": {
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        },
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "required": ["error"],
+        "type": "object",
+        "properties": {
+          "error": {
+            "required": ["code", "message"],
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "required": ["code", "message"],
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "sap.s4.A_CustomerMaterial": {
+        "title": "Customer Materials",
+        "type": "object",
+        "properties": {
+          "SalesOrganization": {
+            "title": "Sales Organization",
+            "maxLength": 4,
+            "type": "string",
+            "description": "An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.\n\nYou can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area."
+          },
+          "DistributionChannel": {
+            "title": "Distribution Channel",
+            "maxLength": 2,
+            "type": "string",
+            "description": "The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.\n\nYou can maintain information about customers and materials by sales organization and distribution channel. Within a sales organization you can deliver goods to a given customer through more than one distribution channel.\nYou can assign a distribution channel to one or more sales organizations. If, for example, you have numerous sales organizations, each sales organization may use the &quot;Wholesale&quot; distribution channel.\nFor each combination of sales organization and distribution channel, you can further assign one or more of the divisions that are defined for the sales organization. You can, for example, assign &quot;Food&quot; and &quot;Non-food&quot; divisions to the &quot;Wholesale&quot; distribution channel. A particular combination of sales organization, distribution channel, and division is known as a sales area."
+          },
+          "Customer": {
+            "title": "Customer",
+            "maxLength": 10,
+            "type": "string",
+            "description": "The customer to whom the condition or the customer-material info record applies.\n\nEnter the number of your customer."
+          },
+          "Material": {
+            "title": "Product",
+            "maxLength": 40,
+            "type": "string",
+            "description": "Alphanumeric key uniquely identifying the product."
+          },
+          "MaterialByCustomer": {
+            "title": "Customer Material",
+            "maxLength": 35,
+            "type": "string",
+            "description": "Uniquely identifies the material from the customer's point of view.\n\nIf the customer uses a different identifier than the one you use for the material, you can include this information in a customer-material info record. You can also include in this record specific shipping details, such as\nMinimum delivery quantity\nPartial delivery conditions\nEnter a value from an existing customer-material info record.",
+            "nullable": true
+          },
+          "MaterialDescriptionByCustomer": {
+            "title": "Customer Description",
+            "maxLength": 40,
+            "type": "string",
+            "description": "The short text that the customer uses to describe the material.\n\nIf you include the customer's description as short text in the customer-material info record, the system automatically uses the text during sales document processing. When you create a sales order, for example, the customer's description appears instead of the short text from the material master record.",
+            "nullable": true
+          },
+          "Plant": {
+            "title": "Plant",
+            "maxLength": 4,
+            "type": "string",
+            "description": "Key that uniquely identifies a plant.",
+            "nullable": true
+          },
+          "DeliveryPriority": {
+            "title": "Delivery Priority",
+            "maxLength": 2,
+            "type": "string",
+            "description": "The delivery priority assigned to an item.\n\nYou can assign delivery priority to either a particular material or to a combination of customer and material. When you process deliveries collectively, you can use delivery priority as one of the selection criteria.",
+            "nullable": true
+          },
+          "MinDeliveryQtyInBaseUnit": {
+            "title": "Minimum Delivery Qty",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Minimum quantity that may be delivered to a customer.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "BaseUnit": {
+            "title": "Base Unit of Measure",
+            "maxLength": 3,
+            "type": "string",
+            "description": "Unit of measure in which stocks of the material are managed. The system converts all the quantities you enter in other units of measure (alternative units of measure) to the base unit of measure.\n\nYou define the base unit of measure and also alternative units of measure and their conversion factors in the material master record.\nSince all data is updated in the base unit of measure, your entry is particularly important for the conversion of alternative units of measure. A quantity in the alternative unit of measure can only be shown precisely if its value can be shown with the decimal places available. To ensure this, please note the following:\nThe base unit of measure is the unit satisfying the highest necessary requirement for precision.\nThe conversion of alternative units of measure to the base unit should result in simple decimal fractions (not, for example, 1/3 = 0.333...).\nInventory Management\nIn Inventory Management, the base unit of measure is the same as the stockkeeping unit.\nServices\nServices have units of measure of their own, including the following:\nService unit\nUnit of measure at the higher item level. The precise quantities of the individual services are each at the detailed service line level.\nBlanket\nUnit of measure at service line level for services to be provided once only, and for which no precise quantities can or are to be specified.",
+            "nullable": true
+          },
+          "PartialDeliveryIsAllowed": {
+            "title": "Partial Deliv./Item",
+            "maxLength": 1,
+            "type": "string",
+            "description": "Specifies whether the customer requires full or partial delivery for the item.\n\nYou use this field to control partial deliveries at the item level. If the customer allows partial delivery, you can choose from different partial delivery options. For example, you can specify whether the customer allows you to make one delivery attempt only on the requested delivery date or whether unlimited delivery attempts are possible.\nWhen partial delivery indicator 'D' is set, the order can never have status 'fully delivered'. You must complete each item by entering a reason for rejection. This could be applied to scheduling agreements, for example.\nYou can enter a value in this field only if the customer allows partial deliveries for the entire sales document.",
+            "nullable": true
+          },
+          "MaxNmbrOfPartialDelivery": {
+            "title": "Max.Part.Deliveries",
+            "multipleOf": 1,
+            "maximum": 9,
+            "minimum": -9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "The maximum number of partial deliveries you can make (including the first delivery) to satisfy the order quantity for an item.\n\nThe system can propose a number from the shipping information in the customer master record. During sales order processing, you can change the proposed value in the shipping information for each item in the sales document.\nYou can only specify a maximum number of partial deliveries if the Partial delivery/item field (in either the customer master record or in the sales document) indicates that partial deliveries are allowed.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "UnderdelivTolrtdLmtRatioInPct": {
+            "title": "Underdel. Tolerance",
+            "multipleOf": 0.1,
+            "maximum": 99.9,
+            "minimum": -99.9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Percentage (based on the order quantity) up to which an underdelivery of this item will be accepted.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "OverdelivTolrtdLmtRatioInPct": {
+            "title": "Overdeliv. Tolerance",
+            "multipleOf": 0.1,
+            "maximum": 99.9,
+            "minimum": -99.9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Percentage (based on the order quantity) up to which an overdelivery of this item will be accepted.\n\nIf you have set the indicator in the Partial delivery/Item field to 'D' (partial delivery allowed), this takes priority. It makes no sense to define a tolerance limit for overdelivery in such case.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "UnlimitedOverdeliveryIsAllowed": {
+            "title": "Unlimited Tolerance",
+            "type": "boolean",
+            "description": "Indicates whether the customer allows unlimited over- and underdeliveries.\n\nIf the customer allows unlimited over- and underdeliveries, you cannot enter values in the fields that specify over- and underdelivery tolerance.",
+            "nullable": true
+          },
+          "CustomerMaterialItemUsage": {
+            "title": "Item Usage",
+            "maxLength": 4,
+            "type": "string",
+            "description": "The item usage controls the system reaction when you process a sales document item in a certain context.\n\nThe item usage can be used for the determination of item categories. It controls which other item categories are to be found in a certain environment (text items and packing items, for example).\nIt can also control which items are to be billed in a service quotation or the corresponding sales order and which are only there for statistical reasons.",
+            "nullable": true
+          },
+          "SalesUnit": {
+            "title": "Sales Unit",
+            "maxLength": 3,
+            "type": "string",
+            "description": "Unit of measure in which the material is sold.",
+            "nullable": true
+          },
+          "SalesQtyToBaseQtyDnmntr": {
+            "title": "Denominator",
+            "multipleOf": 1,
+            "maximum": 99999,
+            "minimum": -99999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Denominator of the conversion factor that the system uses to convert sales units to base units of measure.\n\nMany material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure\nYou store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:\n 100 bt <=> 1 ca\nThe first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "SalesQtyToBaseQtyNmrtr": {
+            "title": "Numerator",
+            "multipleOf": 1,
+            "maximum": 99999,
+            "minimum": -99999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Numerator of the conversion factor that the system uses to convert sales units to base units of measure.\n\nMany material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure\nYou store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:\n 100 bt <=> 1 ca\nThe first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "CustomerMaterialSearchTerm": {
+            "title": "Search Term",
+            "maxLength": 10,
+            "type": "string",
+            "description": "Short name which is used to set up a matchcode.\n\nThe significant part of the name should be entered in this field.\nFor names like 'Mr. Eric P. Crawford', you should enter 'Crawford' in this field.",
+            "nullable": true
+          },
+          "ETag": {
+            "title": "ETag",
+            "maxLength": 27,
+            "type": "string",
+            "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "sap.s4.A_CustomerMaterial-create": {
+        "title": "Customer Materials (for create)",
+        "required": [
+          "SalesOrganization",
+          "DistributionChannel",
+          "Customer",
+          "Material"
+        ],
+        "type": "object",
+        "properties": {
+          "SalesOrganization": {
+            "title": "Sales Organization",
+            "maxLength": 4,
+            "type": "string",
+            "description": "An organizational unit responsible for the sale of certain products or services. The responsibility of a sales organization may include legal liability for products and customer claims.\n\nYou can assign any number of distribution channels and divisions to a sales organization. A particular combination of sales organization, distribution channel, and division is known as a sales area."
+          },
+          "DistributionChannel": {
+            "title": "Distribution Channel",
+            "maxLength": 2,
+            "type": "string",
+            "description": "The way in which products or services reach the customer. Typical examples of distribution channels are wholesale, retail, or direct sales.\n\nYou can maintain information about customers and materials by sales organization and distribution channel. Within a sales organization you can deliver goods to a given customer through more than one distribution channel.\nYou can assign a distribution channel to one or more sales organizations. If, for example, you have numerous sales organizations, each sales organization may use the &quot;Wholesale&quot; distribution channel.\nFor each combination of sales organization and distribution channel, you can further assign one or more of the divisions that are defined for the sales organization. You can, for example, assign &quot;Food&quot; and &quot;Non-food&quot; divisions to the &quot;Wholesale&quot; distribution channel. A particular combination of sales organization, distribution channel, and division is known as a sales area."
+          },
+          "Customer": {
+            "title": "Customer",
+            "maxLength": 10,
+            "type": "string",
+            "description": "The customer to whom the condition or the customer-material info record applies.\n\nEnter the number of your customer."
+          },
+          "Material": {
+            "title": "Product",
+            "maxLength": 40,
+            "type": "string",
+            "description": "Alphanumeric key uniquely identifying the product."
+          },
+          "MaterialByCustomer": {
+            "title": "Customer Material",
+            "maxLength": 35,
+            "type": "string",
+            "description": "Uniquely identifies the material from the customer's point of view.\n\nIf the customer uses a different identifier than the one you use for the material, you can include this information in a customer-material info record. You can also include in this record specific shipping details, such as\nMinimum delivery quantity\nPartial delivery conditions\nEnter a value from an existing customer-material info record.",
+            "nullable": true
+          },
+          "MaterialDescriptionByCustomer": {
+            "title": "Customer Description",
+            "maxLength": 40,
+            "type": "string",
+            "description": "The short text that the customer uses to describe the material.\n\nIf you include the customer's description as short text in the customer-material info record, the system automatically uses the text during sales document processing. When you create a sales order, for example, the customer's description appears instead of the short text from the material master record.",
+            "nullable": true
+          },
+          "Plant": {
+            "title": "Plant",
+            "maxLength": 4,
+            "type": "string",
+            "description": "Key that uniquely identifies a plant.",
+            "nullable": true
+          },
+          "DeliveryPriority": {
+            "title": "Delivery Priority",
+            "maxLength": 2,
+            "type": "string",
+            "description": "The delivery priority assigned to an item.\n\nYou can assign delivery priority to either a particular material or to a combination of customer and material. When you process deliveries collectively, you can use delivery priority as one of the selection criteria.",
+            "nullable": true
+          },
+          "MinDeliveryQtyInBaseUnit": {
+            "title": "Minimum Delivery Qty",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Minimum quantity that may be delivered to a customer.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "BaseUnit": {
+            "title": "Base Unit of Measure",
+            "maxLength": 3,
+            "type": "string",
+            "description": "Unit of measure in which stocks of the material are managed. The system converts all the quantities you enter in other units of measure (alternative units of measure) to the base unit of measure.\n\nYou define the base unit of measure and also alternative units of measure and their conversion factors in the material master record.\nSince all data is updated in the base unit of measure, your entry is particularly important for the conversion of alternative units of measure. A quantity in the alternative unit of measure can only be shown precisely if its value can be shown with the decimal places available. To ensure this, please note the following:\nThe base unit of measure is the unit satisfying the highest necessary requirement for precision.\nThe conversion of alternative units of measure to the base unit should result in simple decimal fractions (not, for example, 1/3 = 0.333...).\nInventory Management\nIn Inventory Management, the base unit of measure is the same as the stockkeeping unit.\nServices\nServices have units of measure of their own, including the following:\nService unit\nUnit of measure at the higher item level. The precise quantities of the individual services are each at the detailed service line level.\nBlanket\nUnit of measure at service line level for services to be provided once only, and for which no precise quantities can or are to be specified.",
+            "nullable": true
+          },
+          "PartialDeliveryIsAllowed": {
+            "title": "Partial Deliv./Item",
+            "maxLength": 1,
+            "type": "string",
+            "description": "Specifies whether the customer requires full or partial delivery for the item.\n\nYou use this field to control partial deliveries at the item level. If the customer allows partial delivery, you can choose from different partial delivery options. For example, you can specify whether the customer allows you to make one delivery attempt only on the requested delivery date or whether unlimited delivery attempts are possible.\nWhen partial delivery indicator 'D' is set, the order can never have status 'fully delivered'. You must complete each item by entering a reason for rejection. This could be applied to scheduling agreements, for example.\nYou can enter a value in this field only if the customer allows partial deliveries for the entire sales document.",
+            "nullable": true
+          },
+          "MaxNmbrOfPartialDelivery": {
+            "title": "Max.Part.Deliveries",
+            "multipleOf": 1,
+            "maximum": 9,
+            "minimum": -9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "The maximum number of partial deliveries you can make (including the first delivery) to satisfy the order quantity for an item.\n\nThe system can propose a number from the shipping information in the customer master record. During sales order processing, you can change the proposed value in the shipping information for each item in the sales document.\nYou can only specify a maximum number of partial deliveries if the Partial delivery/item field (in either the customer master record or in the sales document) indicates that partial deliveries are allowed.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "UnderdelivTolrtdLmtRatioInPct": {
+            "title": "Underdel. Tolerance",
+            "multipleOf": 0.1,
+            "maximum": 99.9,
+            "minimum": -99.9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Percentage (based on the order quantity) up to which an underdelivery of this item will be accepted.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "OverdelivTolrtdLmtRatioInPct": {
+            "title": "Overdeliv. Tolerance",
+            "multipleOf": 0.1,
+            "maximum": 99.9,
+            "minimum": -99.9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Percentage (based on the order quantity) up to which an overdelivery of this item will be accepted.\n\nIf you have set the indicator in the Partial delivery/Item field to 'D' (partial delivery allowed), this takes priority. It makes no sense to define a tolerance limit for overdelivery in such case.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "UnlimitedOverdeliveryIsAllowed": {
+            "title": "Unlimited Tolerance",
+            "type": "boolean",
+            "description": "Indicates whether the customer allows unlimited over- and underdeliveries.\n\nIf the customer allows unlimited over- and underdeliveries, you cannot enter values in the fields that specify over- and underdelivery tolerance.",
+            "nullable": true
+          },
+          "CustomerMaterialItemUsage": {
+            "title": "Item Usage",
+            "maxLength": 4,
+            "type": "string",
+            "description": "The item usage controls the system reaction when you process a sales document item in a certain context.\n\nThe item usage can be used for the determination of item categories. It controls which other item categories are to be found in a certain environment (text items and packing items, for example).\nIt can also control which items are to be billed in a service quotation or the corresponding sales order and which are only there for statistical reasons.",
+            "nullable": true
+          },
+          "SalesUnit": {
+            "title": "Sales Unit",
+            "maxLength": 3,
+            "type": "string",
+            "description": "Unit of measure in which the material is sold.",
+            "nullable": true
+          },
+          "SalesQtyToBaseQtyDnmntr": {
+            "title": "Denominator",
+            "multipleOf": 1,
+            "maximum": 99999,
+            "minimum": -99999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Denominator of the conversion factor that the system uses to convert sales units to base units of measure.\n\nMany material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure\nYou store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:\n 100 bt <=> 1 ca\nThe first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "SalesQtyToBaseQtyNmrtr": {
+            "title": "Numerator",
+            "multipleOf": 1,
+            "maximum": 99999,
+            "minimum": -99999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Numerator of the conversion factor that the system uses to convert sales units to base units of measure.\n\nMany material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure\nYou store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:\n 100 bt <=> 1 ca\nThe first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "CustomerMaterialSearchTerm": {
+            "title": "Search Term",
+            "maxLength": 10,
+            "type": "string",
+            "description": "Short name which is used to set up a matchcode.\n\nThe significant part of the name should be entered in this field.\nFor names like 'Mr. Eric P. Crawford', you should enter 'Crawford' in this field.",
+            "nullable": true
+          },
+          "ETag": {
+            "title": "ETag",
+            "maxLength": 27,
+            "type": "string",
+            "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "sap.s4.A_CustomerMaterial-update": {
+        "title": "Customer Materials (for update)",
+        "type": "object",
+        "properties": {
+          "MaterialByCustomer": {
+            "title": "Customer Material",
+            "maxLength": 35,
+            "type": "string",
+            "description": "Uniquely identifies the material from the customer's point of view.\n\nIf the customer uses a different identifier than the one you use for the material, you can include this information in a customer-material info record. You can also include in this record specific shipping details, such as\nMinimum delivery quantity\nPartial delivery conditions\nEnter a value from an existing customer-material info record.",
+            "nullable": true
+          },
+          "MaterialDescriptionByCustomer": {
+            "title": "Customer Description",
+            "maxLength": 40,
+            "type": "string",
+            "description": "The short text that the customer uses to describe the material.\n\nIf you include the customer's description as short text in the customer-material info record, the system automatically uses the text during sales document processing. When you create a sales order, for example, the customer's description appears instead of the short text from the material master record.",
+            "nullable": true
+          },
+          "Plant": {
+            "title": "Plant",
+            "maxLength": 4,
+            "type": "string",
+            "description": "Key that uniquely identifies a plant.",
+            "nullable": true
+          },
+          "DeliveryPriority": {
+            "title": "Delivery Priority",
+            "maxLength": 2,
+            "type": "string",
+            "description": "The delivery priority assigned to an item.\n\nYou can assign delivery priority to either a particular material or to a combination of customer and material. When you process deliveries collectively, you can use delivery priority as one of the selection criteria.",
+            "nullable": true
+          },
+          "MinDeliveryQtyInBaseUnit": {
+            "title": "Minimum Delivery Qty",
+            "multipleOf": 0.001,
+            "maximum": 9999999999.999,
+            "minimum": -9999999999.999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Minimum quantity that may be delivered to a customer.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "BaseUnit": {
+            "title": "Base Unit of Measure",
+            "maxLength": 3,
+            "type": "string",
+            "description": "Unit of measure in which stocks of the material are managed. The system converts all the quantities you enter in other units of measure (alternative units of measure) to the base unit of measure.\n\nYou define the base unit of measure and also alternative units of measure and their conversion factors in the material master record.\nSince all data is updated in the base unit of measure, your entry is particularly important for the conversion of alternative units of measure. A quantity in the alternative unit of measure can only be shown precisely if its value can be shown with the decimal places available. To ensure this, please note the following:\nThe base unit of measure is the unit satisfying the highest necessary requirement for precision.\nThe conversion of alternative units of measure to the base unit should result in simple decimal fractions (not, for example, 1/3 = 0.333...).\nInventory Management\nIn Inventory Management, the base unit of measure is the same as the stockkeeping unit.\nServices\nServices have units of measure of their own, including the following:\nService unit\nUnit of measure at the higher item level. The precise quantities of the individual services are each at the detailed service line level.\nBlanket\nUnit of measure at service line level for services to be provided once only, and for which no precise quantities can or are to be specified.",
+            "nullable": true
+          },
+          "PartialDeliveryIsAllowed": {
+            "title": "Partial Deliv./Item",
+            "maxLength": 1,
+            "type": "string",
+            "description": "Specifies whether the customer requires full or partial delivery for the item.\n\nYou use this field to control partial deliveries at the item level. If the customer allows partial delivery, you can choose from different partial delivery options. For example, you can specify whether the customer allows you to make one delivery attempt only on the requested delivery date or whether unlimited delivery attempts are possible.\nWhen partial delivery indicator 'D' is set, the order can never have status 'fully delivered'. You must complete each item by entering a reason for rejection. This could be applied to scheduling agreements, for example.\nYou can enter a value in this field only if the customer allows partial deliveries for the entire sales document.",
+            "nullable": true
+          },
+          "MaxNmbrOfPartialDelivery": {
+            "title": "Max.Part.Deliveries",
+            "multipleOf": 1,
+            "maximum": 9,
+            "minimum": -9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "The maximum number of partial deliveries you can make (including the first delivery) to satisfy the order quantity for an item.\n\nThe system can propose a number from the shipping information in the customer master record. During sales order processing, you can change the proposed value in the shipping information for each item in the sales document.\nYou can only specify a maximum number of partial deliveries if the Partial delivery/item field (in either the customer master record or in the sales document) indicates that partial deliveries are allowed.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "UnderdelivTolrtdLmtRatioInPct": {
+            "title": "Underdel. Tolerance",
+            "multipleOf": 0.1,
+            "maximum": 99.9,
+            "minimum": -99.9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Percentage (based on the order quantity) up to which an underdelivery of this item will be accepted.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "OverdelivTolrtdLmtRatioInPct": {
+            "title": "Overdeliv. Tolerance",
+            "multipleOf": 0.1,
+            "maximum": 99.9,
+            "minimum": -99.9,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Percentage (based on the order quantity) up to which an overdelivery of this item will be accepted.\n\nIf you have set the indicator in the Partial delivery/Item field to 'D' (partial delivery allowed), this takes priority. It makes no sense to define a tolerance limit for overdelivery in such case.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "UnlimitedOverdeliveryIsAllowed": {
+            "title": "Unlimited Tolerance",
+            "type": "boolean",
+            "description": "Indicates whether the customer allows unlimited over- and underdeliveries.\n\nIf the customer allows unlimited over- and underdeliveries, you cannot enter values in the fields that specify over- and underdelivery tolerance.",
+            "nullable": true
+          },
+          "CustomerMaterialItemUsage": {
+            "title": "Item Usage",
+            "maxLength": 4,
+            "type": "string",
+            "description": "The item usage controls the system reaction when you process a sales document item in a certain context.\n\nThe item usage can be used for the determination of item categories. It controls which other item categories are to be found in a certain environment (text items and packing items, for example).\nIt can also control which items are to be billed in a service quotation or the corresponding sales order and which are only there for statistical reasons.",
+            "nullable": true
+          },
+          "SalesUnit": {
+            "title": "Sales Unit",
+            "maxLength": 3,
+            "type": "string",
+            "description": "Unit of measure in which the material is sold.",
+            "nullable": true
+          },
+          "SalesQtyToBaseQtyDnmntr": {
+            "title": "Denominator",
+            "multipleOf": 1,
+            "maximum": 99999,
+            "minimum": -99999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Denominator of the conversion factor that the system uses to convert sales units to base units of measure.\n\nMany material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure\nYou store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:\n 100 bt <=> 1 ca\nThe first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "SalesQtyToBaseQtyNmrtr": {
+            "title": "Numerator",
+            "multipleOf": 1,
+            "maximum": 99999,
+            "minimum": -99999,
+            "anyOf": [
+              {
+                "type": "number"
+              }
+            ],
+            "description": "Numerator of the conversion factor that the system uses to convert sales units to base units of measure.\n\nMany material processing functions, such as the generation of production requirements, may require that sales units are converted into base units of measure\nYou store a certain beverage in casks, but sell it in 1-liter bottles. The conversion factor is as follows:\n 100 bt <=> 1 ca\nThe first number (the denominator) represents the sales units, in this case, bottles. The second number (the numerator) represents the equivalent quantity in base units of measure, in this case, casks.",
+            "format": "decimal",
+            "nullable": true,
+            "example": 0
+          },
+          "CustomerMaterialSearchTerm": {
+            "title": "Search Term",
+            "maxLength": 10,
+            "type": "string",
+            "description": "Short name which is used to set up a matchcode.\n\nThe significant part of the name should be entered in this field.\nFor names like 'Mr. Eric P. Crawford', you should enter 'Crawford' in this field.",
+            "nullable": true
+          },
+          "ETag": {
+            "title": "ETag",
+            "maxLength": 27,
+            "type": "string",
+            "nullable": true
+          },
+          "__metadata": {
+            "type": "object",
+            "properties": {
+              "etag": {
+                "title": "Optimistic concurrency etag, use in if-match header",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Customer Materials",
+      "description": "Customer Materials"
+    }
+  ]
+}
