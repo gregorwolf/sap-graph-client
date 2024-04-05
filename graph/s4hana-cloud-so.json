@@ -42,6 +42,38 @@
         {
           "destinationName": "S4HANA-Cloud",
           "path": "/sap/opu/odata/sap/API_PRODUCTGROUP_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_FUNCTIONALLOCATION"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_EQUIPMENT"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_CV_ATTACHMENT_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata4/sap/api_measuringpoint/srvd_a2x/sap/measuringpoint/0001"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata4/sap/api_maintenancetasklist/srvd_a2x/sap/maintenancetasklist/0001"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata4/sap/api_equipment_struclist/srvd_a2x/sap/equipmentstruclist/0001"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata4/sap/api_funcnlloc_struclist/srvd_a2x/sap/funcnllocstruclist/0001"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata4/sap/api_materialserialnumber/srvd_a2x/sap/materialserialnumber/0001"
         }
       ]
     }
