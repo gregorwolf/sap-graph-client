@@ -53,6 +53,10 @@
         },
         {
           "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_MAINTENANCEBOM"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
           "path": "/sap/opu/odata/sap/API_CV_ATTACHMENT_SRV"
         },
         {
