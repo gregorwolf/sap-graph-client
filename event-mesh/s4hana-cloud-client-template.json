@@ -1,0 +1,28 @@
+{
+  "emname": "",
+  "namespace": "",
+  "version": "",
+  "resources": {
+    "units": "10"
+  },
+  "options": {
+    "management": false,
+    "messagingrest": false,
+    "messaging": true
+  },
+  "rules": {
+    "topicRules": {
+      "publishFilter": [{}],
+      "subscribeFilter": [{}]
+    },
+    "queueRules": {
+      "publishFilter": [{}],
+      "subscribeFilter": [{}]
+    }
+  },
+  "xs-security": {
+    "oauth2-configuration": {
+      "credential-types": [{}]
+    }
+  }
+}

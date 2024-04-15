@@ -1,0 +1,18 @@
+{
+  "emname": "S4HS",
+  "namespace": "sap/S4HANAOD/S4HC",
+  "version": "1.1.0",
+  "options": {
+    "management": true,
+    "messagingrest": true,
+    "messaging": true
+  },
+  "rules": {
+    "topicRules": {
+      "subscribeFilter": ["${namespace}/*"]
+    },
+    "queueRules": {
+      "subscribeFilter": ["${namespace}/*"]
+    }
+  }
+}
