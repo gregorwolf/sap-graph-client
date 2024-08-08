@@ -1,0 +1,26 @@
+{
+  "emname": "RESTClient",
+  "namespace": "sap/rest/client",
+  "version": "1.1.0",
+  "resources": {
+    "units": "10"
+  },
+  "options": {
+    "management": true,
+    "messagingrest": true,
+    "messaging": true
+  },
+  "rules": {
+    "topicRules": {
+      "subscribeFilter": ["${namespace}/*"]
+    },
+    "queueRules": {
+      "subscribeFilter": ["${namespace}/*"]
+    }
+  },
+  "xs-security": {
+    "oauth2-configuration": {
+      "credential-types": ["binding-secret", "x509"]
+    }
+  }
+}
