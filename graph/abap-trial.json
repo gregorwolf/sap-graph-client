@@ -11,6 +11,10 @@
         {
           "destinationName": "SAP_ABAP_BACKEND",
           "path": "/sap/opu/odata/sap/EPM_REF_APPS_PROD_MAN_SRV"
+        },
+        {
+          "destinationName": "SAP_ABAP_BACKEND",
+          "path": "/sap/opu/odata/sap/SEPMRA_PO_APV"
         }
       ]
     },
