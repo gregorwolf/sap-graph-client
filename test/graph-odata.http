@@ -8,9 +8,27 @@ grant_type=client_credentials
 &response_type=token
 
 ### Fill Variables from Response
-@access_token = {{requestAccessToken.response.body.$.access_token}}
+#@access_token = {{requestAccessToken.response.body.$.access_token}}
 # Use Access Token from external source
 #@access_token={{$dotenv token}}
+
+### Request Access Token
+# @name requestAccessToken
+POST {{$dotenv graph_tokenendpoint}}/oauth/token
+Accept: application/json
+Authorization: Basic {{$dotenv graph_clientid}}:{{$dotenv graph_clientsecret}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password
+&username={{$dotenv username}}
+&password={{$dotenv password}}
+&client_id={{$dotenv graph_clientid}}
+&response_type=token
+#&login_hint={"origin":"sap.custom"}
+### Fill Variables from Response
+@access_token = {{requestAccessToken.response.body.$.access_token}}
+@id_token = {{requestAccessToken.response.body.$.id_token}}
+###
 
 ###
 GET {{$dotenv graph_uri}}
@@ -38,6 +56,15 @@ GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/sap.s4/A_SalesOrder
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.ecc.vh/PlantSet
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.user
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.user/UserDetailsSet
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4
