@@ -173,3 +173,36 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.epm/Suppliers
   ?$top=10
 Authorization: Bearer {{access_token}}
+### ZBP_SRV
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/$metadata
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/
+Authorization: Bearer {{access_token}}
+###
+# @name readBP
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAddressSet
+Authorization: Bearer {{access_token}}
+###
+@bpID={{readBP.response.body.$.value[0].Partner}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAddressSet('{{bpID}}')
+Authorization: Bearer {{access_token}}
+###
+# @name readAttachments
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAddressSet
+  ?$expand=to_Attachments($select=DocId)
+  &$select=Partner,NameOrg1
+Authorization: Bearer {{access_token}}
+###
+@DocId={{readAttachments.response.body.$.value[0].to_Attachments[0].DocId}}
+###
+# Is translated to backend request:
+# /sap/opu/odata/sap/ZBP_SRV/BPAttachmentSet(Partner='1',DocId='FOL41000000000004EXT49000000000092')?$select=blob,Partner,DocId
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAttachmentSet(Partner='{{bpID}}',DocId='{{DocId}}')/blob
+Authorization: Bearer {{access_token}}
+###
+# Is translated to backend request:
+# /sap/opu/odata/sap/ZBP_SRV/BPAttachmentSet(Partner='1',DocId='FOL41000000000004EXT49000000000092')?$select=blob
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAttachmentSet(Partner='{{bpID}}',DocId='{{DocId}}')/$value
+Authorization: Bearer {{access_token}}

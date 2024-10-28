@@ -19,6 +19,16 @@
       ]
     },
     {
+      "name": "my.a4h.bp",
+      "namespace": "my.a4h.bp",
+      "services": [
+        {
+          "destinationName": "SAP_ABAP_BACKEND_BASIC_AUTH",
+          "path": "/sap/opu/odata/sap/ZBP_SRV"
+        }
+      ]
+    },
+    {
       "name": "my.a4h.user",
       "namespace": "my.a4h.user",
       "services": [
@@ -40,6 +50,13 @@
         "sourceEntity": null
       },
       {
+        "name": "my.a4h.bp.*",
+        "leading": "my.a4h.bp",
+        "local": [],
+        "cues": [],
+        "sourceEntity": null
+      },
+      {
         "name": "my.a4h.user.*",
         "leading": "my.a4h.user",
         "local": [],
@@ -47,6 +64,5 @@
         "sourceEntity": null
       }
     ]
-  },
-  "effectiveGraphModelVersion": "3.1.0"
+  }
 }
