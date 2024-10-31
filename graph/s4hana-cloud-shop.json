@@ -1,0 +1,52 @@
+{
+  "businessDataGraphIdentifier": "s4hcsh",
+  "description": "S/4HANA Cloud Webshop",
+  "graphModelVersion": "^v3",
+  "schemaVersion": "1.2.0",
+  "dataSources": [
+    {
+      "name": "s4",
+      "services": [
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_MATERIAL_STOCK_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_SALES_ORDER_SIMULATION_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_CV_ATTACHMENT_SRV"
+        }
+      ]
+    }
+  ],
+  "locatingPolicy": {
+    "cues": [],
+    "rules": [
+      {
+        "name": "sap.s4.*",
+        "leading": "s4",
+        "local": []
+      },
+      {
+        "name": "sap.graph.*",
+        "leading": "s4",
+        "local": []
+      }
+    ]
+  }
+}
