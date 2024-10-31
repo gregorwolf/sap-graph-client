@@ -198,6 +198,13 @@ Authorization: Bearer {{access_token}}
 @DocId={{readAttachments.response.body.$.value[0].to_Attachments[0].DocId}}
 ###
 # Is translated to backend request:
+# /sap/opu/odata/sap/ZBP_SRV/BPAttachmentSet(Partner='1',DocId='FOL41000000000004EXT49000000000092')?$select=Content,Partner,DocId
+# And results in: 
+# Error during request to remote service: Method 'BPATTACHMENTSET_GET_ENTITY' not implemented in data provider class
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAttachmentSet(Partner='{{bpID}}',DocId='{{DocId}}')/Content
+Authorization: Bearer {{access_token}}
+###
+# Is translated to backend request:
 # /sap/opu/odata/sap/ZBP_SRV/BPAttachmentSet(Partner='1',DocId='FOL41000000000004EXT49000000000092')?$select=blob,Partner,DocId
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAttachmentSet(Partner='{{bpID}}',DocId='{{DocId}}')/blob
 Authorization: Bearer {{access_token}}
