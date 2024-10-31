@@ -106,6 +106,32 @@ GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_CompanyCode
   ?$top=10
 Authorization: Bearer {{access_token}}
 ###
+@BusinessObjectTypeName=BUS1001006
+@material=FG011
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/GetAttachmentCount(SAPObjectNodeType='',SAPObjectType='',SemanticObject='',LinkedSAPObjectKey='{{material}}',BusinessObjectTypeName='{{BusinessObjectTypeName}}')
+Authorization: Bearer {{access_token}}
+###
+# @name getAllOriginals
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/GetAllOriginals(SAPObjectNodeType='',SAPObjectType='',SemanticObject='',LinkedSAPObjectKey='{{material}}',BusinessObjectTypeName='{{BusinessObjectTypeName}}')
+Authorization: Bearer {{access_token}}
+### Map Response to Variable
+@DMSDocumentInfoRecordDocType={{getAllOriginals.response.body.value[0].DocumentInfoRecordDocType}}
+@DMSDocumentInfoRecordDocNumber={{getAllOriginals.response.body.value[0].DocumentInfoRecordDocNumber}}
+@DMSLogicalDocument={{getAllOriginals.response.body.value[0].LogicalDocument}}
+@DMSArchiveDocumentID={{getAllOriginals.response.body.value[0].ArchiveDocumentID}}
+@DMSLinkedSAPObjectKey={{getAllOriginals.response.body.value[0].LinkedSAPObjectKey}}
+@DMSBusinessObjectTypeName={{getAllOriginals.response.body.value[0].BusinessObjectTypeName}}
+### Read created document Metadata:
+### Resource not found for the segment 'blob'
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/AttachmentContentSet(DocumentInfoRecordDocType='{{DMSDocumentInfoRecordDocType}}',DocumentInfoRecordDocNumber='{{DMSDocumentInfoRecordDocNumber}}',DocumentInfoRecordDocVersion='',DocumentInfoRecordDocPart='',LogicalDocument='{{DMSLogicalDocument}}',ArchiveDocumentID='{{DMSArchiveDocumentID}}',LinkedSAPObjectKey='{{DMSLinkedSAPObjectKey}}',BusinessObjectTypeName='{{DMSBusinessObjectTypeName}}')
+Authorization: Bearer {{access_token}}
+Accept: application/json
+### Read created document Content
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/AttachmentContentSet(DocumentInfoRecordDocType='{{DMSDocumentInfoRecordDocType}}',DocumentInfoRecordDocNumber='{{DMSDocumentInfoRecordDocNumber}}',DocumentInfoRecordDocVersion='',DocumentInfoRecordDocPart='',LogicalDocument='{{DMSLogicalDocument}}',ArchiveDocumentID='{{DMSArchiveDocumentID}}',LinkedSAPObjectKey='{{DMSLinkedSAPObjectKey}}',BusinessObjectTypeName='{{DMSBusinessObjectTypeName}}')/$value
+Authorization: Bearer {{access_token}}
+Accept: application/json
+###
 ### SAP ERP Backend requests
 ###
 GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/my.erp.bp/
