@@ -214,6 +214,9 @@ Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAddressSet('{{bpID}}')
 Authorization: Bearer {{access_token}}
+### Function Import
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/GetBP(Partner='{{bpID}}')
+Authorization: Bearer {{access_token}}
 ###
 # @name readAttachments
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.a4h.bp/BPAddressSet
