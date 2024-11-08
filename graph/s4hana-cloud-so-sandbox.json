@@ -16,6 +16,10 @@
           "path": "/sap/opu/odata/sap/API_SALES_ORDER_SRV"
         },
         {
+          "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata4/sap/api_salesorder/srvd_a2x/sap/salesorder/0001"
+        },
+        {
           "destinationName": "S4HANA-Cloud-Sandbox",
           "path": "/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV"
         },
