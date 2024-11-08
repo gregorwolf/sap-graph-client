@@ -42,6 +42,10 @@
         {
           "destinationName": "S4HANA-Cloud-Sandbox",
           "path": "/sap/opu/odata/sap/API_PRODUCTGROUP_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud-Sandbox",
+          "path": "/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=0002"
         }
       ]
     }
