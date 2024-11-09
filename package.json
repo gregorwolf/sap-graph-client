@@ -7,9 +7,9 @@
     "convert": "cd gen && api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=json --check openapi-3.0.2-bp-ZA_BusinessPartner.json 2&> ./error.json > swagger-2-bp-ZA_BusinessPartner.json"
   },
   "dependencies": {
-    "express": "4.18.2",
+    "express": "4.21.1",
     "node-fetch": "3.3.2",
-    "universal-cookie": "6.1.1"
+    "universal-cookie": "7.2.2"
   },
   "devDependencies": {
     "api-spec-converter": "^2.12.0",
