@@ -12,10 +12,12 @@
   },
   "rules": {
     "topicRules": {
-      "subscribeFilter": ["${namespace}/*"]
+      "publishFilter": ["${namespace}/*", "sap/S4HANAOD/K8M/*"],
+      "subscribeFilter": ["${namespace}/*", "sap/S4HANAOD/K8M/*"]
     },
     "queueRules": {
-      "subscribeFilter": ["${namespace}/*"]
+      "publishFilter": ["${namespace}/*", "sap/S4HANAOD/K8M/*"],
+      "subscribeFilter": ["${namespace}/*", "sap/S4HANAOD/K8M/*"]
     }
   },
   "xs-security": {
