@@ -1,3 +1,5 @@
+// Based on the SAP Tutorial:
+// https://developers.sap.com/tutorials/cp-enterprisemessaging-nodejs-producing-app.html
 "use strict";
 require("dotenv").config();
 //------------------------------------------------------------------------------------------------------------------
