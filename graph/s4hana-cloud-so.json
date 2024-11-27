@@ -17,6 +17,10 @@
         },
         {
           "destinationName": "S4HANA-Cloud",
+          "path": "/sap/opu/odata/sap/API_SALES_ORDER_SIMULATION_SRV"
+        },
+        {
+          "destinationName": "S4HANA-Cloud",
           "path": "/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV"
         },
         {

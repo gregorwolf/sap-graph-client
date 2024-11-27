@@ -1,0 +1,43 @@
+### Get Access Token (Cloud Foundry using Client Credentials)
+# @name requestAccessToken
+POST {{$dotenv graph_tokenendpoint}}/oauth/token
+Authorization: Basic {{$dotenv graph_clientid}}:{{$dotenv graph_clientsecret}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&response_type=token
+### Fill Variables from Response
+@access_token = {{requestAccessToken.response.body.$.access_token}}
+###
+POST {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_SalesOrderSimulation
+# ?$expand=to_Item(to_PricingElement(),to_ScheduleLine())
+# results in:
+# Query option '$expand' is not supported for this request; only '' are allowed
+Authorization: Bearer {{access_token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "SalesOrderType": "OR",
+  "SalesOrganization": "1010",
+  "DistributionChannel": "10",
+  "OrganizationDivision": "00",
+  "SoldToParty": "10100003",
+  "PurchaseOrderByCustomer": "PO-GROUP-88",
+  "SalesOrderDate": "2024-11-17",
+  "PricingDate": "2024-11-17",
+  "RequestedDeliveryDate": "2024-11-17",
+  "ShippingCondition": "01",
+  "CompleteDeliveryIsDefined": true,
+  "to_Item": [
+    {
+      "SalesOrder": "10",
+      "SalesOrderItem": "10",
+      "Material": "TG11",
+      "RequestedQuantity": "100",
+      "RequestedQuantityUnit": "PC",
+      "to_PricingElement": [],
+      "to_ScheduleLine": []
+    }
+  ]
+}
