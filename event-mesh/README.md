@@ -31,6 +31,12 @@ loop Until all entities are transferred
 end
 ```
 
+## Setup Events in S/4HANA On Premise
+
+[Integrating with SAP Event Mesh Default Plan](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/810dfd34f2cc4f39aa8d946b5204fd9c/e6dab5c2c1a441858aeccce927984c6e.html?locale=en-US&version=2023.001)
+
+## Environment Variables
+
 .env Template:
 
 ```
