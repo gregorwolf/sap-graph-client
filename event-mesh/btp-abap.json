@@ -1,0 +1,28 @@
+{
+  "emname": "btp-abap",
+  "namespace": "sap/btp/abap",
+  "version": "1.1.0",
+  "resources": {
+    "units": "10"
+  },
+  "options": {
+    "management": true,
+    "messagingrest": true,
+    "messaging": true
+  },
+  "rules": {
+    "topicRules": {
+      "publishFilter": ["${namespace}/*", "sap/*"],
+      "subscribeFilter": ["${namespace}/*", "sap/*"]
+    },
+    "queueRules": {
+      "publishFilter": ["${namespace}/*", "sap/*"],
+      "subscribeFilter": ["${namespace}/*", "sap/*"]
+    }
+  },
+  "xs-security": {
+    "oauth2-configuration": {
+      "credential-types": ["binding-secret", "x509"]
+    }
+  }
+}
