@@ -73,6 +73,12 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/$metadata
 Authorization: Bearer {{access_token}}
 ###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/mys4
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/mys4/$metadata
+Authorization: Bearer {{access_token}}
+###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_BusinessPartner
   ?$top=10
   &$skip=10
