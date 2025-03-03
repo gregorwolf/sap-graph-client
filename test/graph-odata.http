@@ -110,7 +110,8 @@ Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_OutbDeliveryHeader
   ?$top=10
-  &$filter=CreationDate gt 2024-09-08T00:00:00Z
+  &$filter=CreationDate gt 2024-10-08T00:00:00Z
+  &$count=true
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/A_CompanyCode
@@ -139,7 +140,7 @@ GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/AttachmentContentSet
 Authorization: Bearer {{access_token}}
 Accept: application/json
 ### Read created document Content
-GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/AttachmentContentSet(DocumentInfoRecordDocType='{{DMSDocumentInfoRecordDocType}}',DocumentInfoRecordDocNumber='{{DMSDocumentInfoRecordDocNumber}}',DocumentInfoRecordDocVersion='',DocumentInfoRecordDocPart='',LogicalDocument='{{DMSLogicalDocument}}',ArchiveDocumentID='{{DMSArchiveDocumentID}}',LinkedSAPObjectKey='{{DMSLinkedSAPObjectKey}}',BusinessObjectTypeName='{{DMSBusinessObjectTypeName}}')/$value
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.s4/AttachmentContentSet(DocumentInfoRecordDocType='{{DMSDocumentInfoRecordDocType}}',DocumentInfoRecordDocNumber='{{DMSDocumentInfoRecordDocNumber}}',DocumentInfoRecordDocVersion='',DocumentInfoRecordDocPart='',LogicalDocument='{{DMSLogicalDocument}}',ArchiveDocumentID='{{DMSArchiveDocumentID}}',LinkedSAPObjectKey='{{DMSLinkedSAPObjectKey}}',BusinessObjectTypeName='{{DMSBusinessObjectTypeName}}')/Content
 Authorization: Bearer {{access_token}}
 Accept: application/json
 ###
