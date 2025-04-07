@@ -8,7 +8,7 @@ grant_type=client_credentials
 &response_type=token
 
 ### Fill Variables from Response
-#@access_token = {{requestAccessToken.response.body.$.access_token}}
+@access_token = {{requestAccessToken.response.body.$.access_token}}
 # Use Access Token from external source
 #@access_token={{$dotenv token}}
 
@@ -26,7 +26,7 @@ grant_type=password
 &response_type=token
 #&login_hint={"origin":"sap.custom"}
 ### Fill Variables from Response
-@access_token = {{requestAccessToken.response.body.$.access_token}}
+#@access_token = {{requestAccessToken.response.body.$.access_token}}
 @id_token = {{requestAccessToken.response.body.$.id_token}}
 ###
 
