@@ -24,6 +24,7 @@ grant_type=password
 &password={{$dotenv password}}
 &client_id={{$dotenv graph_clientid}}
 &response_type=token
+&login_hint={"origin":"sap.default"}
 #&login_hint={"origin":"sap.custom"}
 ### Fill Variables from Response
 #@access_token = {{requestAccessToken.response.body.$.access_token}}
@@ -37,9 +38,6 @@ Authorization: Bearer {{access_token}}
 GET {{$dotenv graph_uri}}/catalog
 Authorization: Bearer {{access_token}}
 ###
-GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}
-Authorization: Bearer {{access_token}}
-###
 GET {{$dotenv graph_uri}}/api
 Authorization: Bearer {{access_token}}
 ###
@@ -47,6 +45,12 @@ GET {{$dotenv graph_uri}}/config
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/sap.graph
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/sap.graph/Bank
 Authorization: Bearer {{access_token}}
 ### For S/4HANA start here
 GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/sap.s4
@@ -56,6 +60,17 @@ GET {{$dotenv graph_uri}}/catalog/{{$dotenv graph_name}}/sap.s4/A_SalesOrder
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.graph
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.graph/$metadata
+Authorization: Bearer {{access_token}}
+###
+GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/sap.graph/Bank
+  ?$top=10
+  &$count=true
 Authorization: Bearer {{access_token}}
 ###
 GET {{$dotenv graph_uri}}/api/{{$dotenv graph_name}}/my.ecc.vh/PlantSet
