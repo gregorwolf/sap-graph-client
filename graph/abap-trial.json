@@ -1,8 +1,6 @@
 {
   "businessDataGraphIdentifier": "a4h",
   "description": "ABAP Trial",
-  "graphModelVersion": "^v3",
-  "schemaVersion": "1.2.0",
   "dataSources": [
     {
       "name": "my.a4h.epm",
@@ -23,7 +21,7 @@
       "namespace": "my.a4h.bp",
       "services": [
         {
-          "destinationName": "SAP_ABAP_BACKEND_BASIC_AUTH",
+          "destinationName": "SAP_ABAP_BACKEND",
           "path": "/sap/opu/odata/sap/ZBP_SRV"
         }
       ]
