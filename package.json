@@ -2,17 +2,20 @@
   "name": "sap-graph-client",
   "version": "0.0.1",
   "private": false,
+  "engines": {
+    "node": "^22"
+  },
   "scripts": {
     "start": "node src/helloSalesOrders",
     "convert": "cd gen && api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=json --check openapi-3.0.2-bp-ZA_BusinessPartner.json 2&> ./error.json > swagger-2-bp-ZA_BusinessPartner.json"
   },
   "dependencies": {
-    "express": "4.21.1",
+    "express": "4.21.2",
     "node-fetch": "3.3.2",
-    "universal-cookie": "7.2.2"
+    "universal-cookie": "8.0.1"
   },
   "devDependencies": {
     "api-spec-converter": "^2.12.0",
-    "artillery": "^2.0.20"
+    "artillery": "^2.0.26"
   }
 }
