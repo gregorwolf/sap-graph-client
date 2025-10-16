@@ -3,6 +3,15 @@
   "description": "ABAP Trial",
   "dataSources": [
     {
+      "name": "s4",
+      "services": [
+        {
+          "destinationName": "SAP_ABAP_BACKEND",
+          "path": "/sap/opu/odata4/sap/api_bank/srvd_a2x/sap/bank/0002"
+        }
+      ]
+    },
+    {
       "name": "my.a4h.epm",
       "namespace": "my.a4h.epm",
       "services": [
@@ -41,6 +50,16 @@
     "cues": [],
     "rules": [
       {
+        "name": "sap.s4.*",
+        "leading": "s4",
+        "local": []
+      },
+      {
+        "name": "sap.graph.*",
+        "leading": "s4",
+        "local": []
+      },
+      {
         "name": "my.a4h.epm.*",
         "leading": "my.a4h.epm",
         "local": [],
@@ -62,5 +81,6 @@
         "sourceEntity": null
       }
     ]
-  }
+  },
+  "graphModelVersion": "3.1.4"
 }
