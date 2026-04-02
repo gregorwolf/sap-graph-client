@@ -17,7 +17,7 @@
       ]
     }
   },
-  "namespace": "sap/em/a4h",
+  "namespace": "sap/em/webshop",
   "resources": {
     "units": 10
   }
