@@ -14,7 +14,7 @@ const inputX = process.env.XBEM_INPUT_X;
 const reconnect_retry_ms = process.env.RECONNECT_RETRY_MS;
 
 // Get options from CF environment
-const options = msgenv.msgClientOptions("rest-client", [inputX], []);
+const options = msgenv.msgClientOptions("webshop", [inputX], []);
 
 //------------------------------------------------------------------------------------------------------------------
 // Start messaging client
@@ -38,7 +38,7 @@ client
     console.log(
       "connection to SAP Event Mesh service lost, trying to reconnect in " +
         reconnect_retry_ms +
-        " ms"
+        " ms",
     );
     setTimeout(() => client.connect(), reconnect_retry_ms);
   });

@@ -40,23 +40,28 @@ end
 .env Template:
 
 ```
-XBEM_INPUT_X=ProductCreated
+XBEM_INPUT_X=bp
 SAP_XBEM_BINDINGS='{
     "inputs": {
-        "ProductCreated": {
-            "service": "rest-client",
-            "address": "queue:sap/rest/client/ProductCreated",
+        "bp": {
+            "service": "webshop",
+            "address": "queue:sap/em/webshop/bp",
+            "reliable": true
+        },
+        "test": {
+            "service": "webshop",
+            "address": "queue:sap/em/webshop/test",
             "reliable": true
         }
     },
     "outputs": {
         "ProductCreated" : {
-            "service": "rest-client",
+            "service": "webshop",
             "address": "topic:sap/S4HANAOD/K8M/ce/sap/s4/beh/product/v1/Product/Created/v1",
             "reliable": false
         },
         "ProductChanged" : {
-            "service": "rest-client",
+            "service": "webshop",
             "address": "topic:sap/S4HANAOD/K8M/ce/sap/s4/beh/product/v1/Product/Changed/v1",
             "reliable": false
         }
@@ -68,12 +73,12 @@ VCAP_SERVICES='{
             "label": "enterprise-messaging",
             "provider": null,
             "plan": "default",
-            "name": "rest-client",
+            "name": "webshop",
             "tags": [
                 "enterprise-messaging"
             ],
             "instance_guid": "6a1ca408-e439-4f46-a765-dea57b698064",
-            "instance_name": "rest-client",
+            "instance_name": "webshop",
             "binding_guid": "5978cea2-c341-48dc-bbe6-8b8eb8300c6b",
             "binding_name": null,
             "credentials": {
